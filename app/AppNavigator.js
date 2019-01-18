@@ -11,36 +11,43 @@ import {
 	createReactNavigationReduxMiddleware,
 	createNavigationReducer,
 } from 'react-navigation-redux-helpers';
+import { combineReducers } from 'redux';
 import { connect } from 'react-redux';
 
-import authNav from './page/auth/navigation';
+import AuthStack from './page/auth/navigation';
 import LaunchScreen from './page/launch-screen/LaunchScreen';
 import Home from './page/home/Home';
-
-const AuthStack = createStackNavigator(authNav);
 
 const AppStack = createStackNavigator({
 	Home: { screen: Home },
 }, {});
 
-const AppNavigator = createSwitchNavigator({
-	LaunchScreen: { screen: LaunchScreen },
+const AppNavigator = createAppContainer(createSwitchNavigator({
+	LaunchScreen,
 	AuthStack,
 	AppStack,
 }, {
 	initialRouteName: 'LaunchScreen',
-});
+}));
 
-export const routerReducer = createNavigationReducer(AppNavigator);
+const initialState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('LaunchScreen'));
+
+const navReducer = (state = initialState, action) => {
+	return AppNavigator.router.getStateForAction(action, state) || state;
+};
+
+export const reducers = {
+	nav: navReducer,
+};
 
 export const routerMiddleware = createReactNavigationReduxMiddleware(
 	'root',
 	state => state.router
 );
 
-const App = reduxifyNavigator(AppNavigator, 'root')
+const App = reduxifyNavigator(AppNavigator, 'root');
 
-@connect(({ app, router }) => ({ app, router }))
+@connect(({ router }) => ({ router }))
 export default class Router extends PureComponent {
 	componentWillMount() {
 		BackHandler.addEventListener('hardwareBackPress', this.backHandle)
@@ -63,9 +70,8 @@ export default class Router extends PureComponent {
 	}
 
 	render() {
-		const { app, dispatch, router } = this.props;
-		if (app.loading) return <Loading />
+		const { dispatch, router } = this.props;
 
-		return <App dispatch={dispatch} state={router}/>;
+		return <App dispatch={dispatch} state={router.nav}/>;
 	}
 }
