@@ -1,26 +1,28 @@
 import React from 'react';
-import { AppRegistry } from 'react-native';
-import { REHYDRATE, PURGE, persistCombineReducers, persistStore } from 'redux-persist';
+import { persistStore } from 'redux-persist';
+import dvaImmer from 'dva-immer';
 
 import dva from './utils/dva';
-import Router, { routerMiddleware, reducers } from './AppNavigator';
-import appModel from './models/app';
+import { createReducers, routerMiddleware } from './utils/redux';
+import Router, { AppNavigator } from './navigator/';
+import models from './models/';
 import persistConf from './config/persist.conf';
-
-let reducer = persistCombineReducers(persistConf, reducers);
+import { persistEnhancer } from './utils/persist';
 
 const app = dva({
 	initialState: {},
-	models: [appModel],
-	extraReducers: { router: reducer },
+	models: models,
+	extraReducers: { router: createReducers(AppNavigator) },
+	extraEnhancers: [persistEnhancer(persistConf)],
 	onAction: [routerMiddleware],
 	onError(e) {
 		console.log(e);
 	},
 });
 
-persistStore(app.getStore(), null, (a) => {
-	console.log(a);
-});
+/* dva使用immutable */
+app.use(dvaImmer());
 
-export default app.start(<Router />);
+persistStore(app.getStore(), null, () => {});
+
+export default app.start(<Router/>);

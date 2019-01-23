@@ -1,3 +1,6 @@
+/**
+ * 启动页
+ */
 import React, { Component } from 'react';
 import { View, Text, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
@@ -17,10 +20,6 @@ class LaunchScreen extends Component {
 	}
 
 	componentDidMount() {
-		// this.props.dispatch({
-		// 	type: 'app/setToken',
-		// 	payload: '0a98dfa9sdtfa89sdtf80ast9df98',
-		// });
 		this.countdown();
 	}
 

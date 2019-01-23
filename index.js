@@ -5,6 +5,7 @@ AppRegistry.registerComponent('rnc_app', () => App);
 
 YellowBox.ignoreWarnings([
 	'Warning: ',
+	'RCTBridge ',
 	'Remote debugger ',
 	'Module RCTImageLoader',
 ]);

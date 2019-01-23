@@ -1,5 +1,5 @@
 /**
- * dva 相关配置信息
+ * redux-persist 相关配置信息
  */
 import { AsyncStorage } from 'react-native';
 
@@ -8,9 +8,7 @@ import { AsyncStorage } from 'react-native';
  * @type {Array}
  */
 export const whitelist = [
-	'userInfo',
 	'app',
-	'token',
 ];
 
 export default {

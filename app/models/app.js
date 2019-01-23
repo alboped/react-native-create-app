@@ -1,20 +1,15 @@
 export default {
 	namespace: 'app',
 	state: {
-		token: null,
+		mobile: '',
 	},
 	reducers: {
-		saveUserInfo(state, { payload }) {
-			return {
-				...state,
-				token: payload,
-			}
-		},
+		saveUser: (state, { payload }) => ({ ...state, ...payload }),
 	},
 	effects: {
 		*login({ payload }, { call, put }) {
-			put({
-				type: 'saveUserInfo',
+			yield put({
+				type: 'saveUser',
 				payload
 			});
 		},

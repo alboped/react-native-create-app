@@ -6,19 +6,15 @@ export default StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-	btnText: {
-		marginTop: 20,
-	},
 	mobileView: {
 		flexDirection: 'row',
-		// alignItems: 'center',
-		height: 50,
+		alignItems: 'center',
+		marginBottom: 20,
 	},
 	mobileInput: {
 		width: 160,
-		height: 40,
-		marginBottom: 10,
+		height: 30,
 		borderColor: '#ddd',
-		borderWidth: 1,
+		borderBottomWidth: 1,
 	}
 });
