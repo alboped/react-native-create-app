@@ -58,8 +58,8 @@ class ComponsntA extends Component {}
 // 等同于
 
 @connect(state => ({
-	app: state.app,
-	home: state.home,
+  app: state.app,
+  home: state.home,
 }))
 class ComponsntA extends Component {}
 ```
@@ -68,21 +68,21 @@ class ComponsntA extends Component {}
 ```js
 @connect()
 class ComponentA extends Component {
-	handle = () => {
-		this.props.dispatchAction('app/login', {
-			mobile: '123456',
-			// ……
-		});
-		/*
-		等同于
-		this.props.dispatch({
-			type: 'app/login',
-			payload: {
-				mobile: '123456',
-				// ……
-			}
-		});
-		*/
-	}
+  handle = () => {
+    this.props.dispatchAction('app/login', {
+      mobile: '123456',
+      // ……
+    });
+    /*
+    等同于
+    this.props.dispatch({
+      type: 'app/login',
+      payload: {
+        mobile: '123456',
+        // ……
+      }
+    });
+    */
+  }
 }
 ```
