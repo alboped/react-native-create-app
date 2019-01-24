@@ -9,7 +9,7 @@ export const setTopLevelNavigator = navRef => {
 }
 
 /**
- * 解析路由参数并跳转（后台设置的跳转路由）
+ * 跳转页面
  * @param  {String} route 路由
  * @param  {Object} params 路由参数
  * @return {undefined}

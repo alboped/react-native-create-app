@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, TextInput } from 'react-native';
 
 import styles from './styles';
-import Navigation from '../../utils/navigation/';
-import { connect } from '../../utils/decorator/';
+import Navigation from '../../utils/navigation';
+import { connect } from '../../utils/decorator';
 
 @connect(state => ({app: state.app}))
 export default class Login extends Component {
@@ -30,11 +30,8 @@ export default class Login extends Component {
 	}
 
 	login = () => {
-		this.props.dispatch({
-			type: 'app/login',
-			payload: {
-				mobile: this.state.inputValue,
-			}
+		this.props.dispatchAction('app/login', {
+			mobile: this.state.inputValue,
 		});
 
 		Navigation.push('AppStack');

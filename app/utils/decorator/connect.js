@@ -8,6 +8,10 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
  */
 export default (mapStateToProps, ...args) => WrappedComponent => {
 	class Comp extends Component {
+		static defaultProps = {
+			getRef: () => {}
+		}
+
 		/**
 		 * 包装dispatch方法
 		 * @param  {String} type    actionType
@@ -26,6 +30,7 @@ export default (mapStateToProps, ...args) => WrappedComponent => {
 				<WrappedComponent
 					dispatchAction={this.dispatchAction}
 					{...this.props}
+					ref={this.props.getRef}
 				/>
 			);
 		}
