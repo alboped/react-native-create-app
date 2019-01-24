@@ -55,13 +55,16 @@ import { connect } from '……/utils/decorator';
 @connect(['app', 'home'])
 class ComponsntA extends Component {}
 
-// 等同于
+/*
 
+等同于
 @connect(state => ({
     app: state.app,
     home: state.home,
 }))
 class ComponsntA extends Component {}
+
+*/
 ```
 
 ### dispatchAction
@@ -74,6 +77,7 @@ class ComponentA extends Component {
             // ……
         });
         /*
+
         等同于
         this.props.dispatch({
             type: 'app/login',
@@ -82,7 +86,17 @@ class ComponentA extends Component {
                 // ……
             }
         });
+
         */
     }
 }
+```
+
+### Navigation 导航
+#### push
+```js
+import Navigation from '……/utils/navigation';
+
+// 跳转到Login页面；
+Navigation.push('Login');
 ```
