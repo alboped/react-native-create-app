@@ -1,8 +1,8 @@
 # react-native-create-app
 react-native 项目模版
 基于
-- [dva](https://dvajs.com/)
-- [redux-persist](https://github.com/rt2zz/redux-persist)
+* [dva](https://dvajs.com/)
+* [redux-persist](https://github.com/rt2zz/redux-persist)
 
 ## 运行项目
 
