@@ -1,8 +1,9 @@
 # react-native-create-app
 react-native 项目模版
+
 基于
-* [dva](https://dvajs.com/)
-* [redux-persist](https://github.com/rt2zz/redux-persist)
+* [dva](https://dvajs.com/) 一个基于[redux](https://github.com/reduxjs/redux)和[redux-saga](https://github.com/redux-saga/redux-saga)的数据里方案，简化了redux的用法。
+* [redux-persist](https://github.com/rt2zz/redux-persist) redux数据持久化
 
 ## 运行项目
 
