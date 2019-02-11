@@ -49,7 +49,7 @@ $ yarn android
 
 ## 工具API
 
-### redux
+### Redux
 #### connect：包装connect装饰器
 ```js
 import { connect } from '……/utils/decorator';
@@ -57,15 +57,12 @@ import { connect } from '……/utils/decorator';
 @connect(['app', 'home'])
 class ComponsntA extends Component {}
 
-/*
-
-等同于
+/* 等同于：
 @connect(state => ({
     app: state.app,
     home: state.home,
 }))
 class ComponsntA extends Component {}
-
 */
 ```
 
@@ -78,9 +75,8 @@ class ComponentA extends Component {
             mobile: '123456',
             // ……
         });
-        /*
 
-        等同于
+        /* 等同于：
         this.props.dispatch({
             type: 'app/login',
             payload: {
@@ -88,13 +84,12 @@ class ComponentA extends Component {
                 // ……
             }
         });
-
         */
     }
 }
 ```
 
-### Navigation 导航
+### Navigation
 #### push
 ```js
 import Navigation from '……/utils/navigation';
