@@ -4,6 +4,11 @@ import { checkUrl } from '../index';
 
 let _navigator;
 
+/**
+ * 获取顶层导航的实例
+ * @param  {Object} navRef 组件实例
+ * @return {undefined}
+ */
 export const setTopLevelNavigator = navRef => {
 	_navigator = navRef;
 }

@@ -2,7 +2,7 @@
 react-native 项目模版
 
 基于
-* [dva](https://dvajs.com/) - 一个基于 [redux](https://github.com/reduxjs/redux) 和 [redux-saga](https://github.com/redux-saga/redux-saga) 的数据流方案，简化了redux的用法。
+* [dva](https://dvajs.com/) - 基于 [redux](https://github.com/reduxjs/redux) 和 [redux-saga](https://github.com/redux-saga/redux-saga) 的数据流方案，简化了redux的用法。
 * [redux-persist](https://github.com/rt2zz/redux-persist) - redux 数据持久化方案。
 
 ## 运行项目
