@@ -1,6 +1,5 @@
 const { exec } = require('child_process');
 
-
 const cleanShell = 'xcodebuild clean -project ./ios/rnc_app.xcodeproj -scheme rnc_app -configuration Release';
 const archiveShell = 'xcodebuild archive -project ./ios/rnc_app.xcodeproj -scheme rnc_app -archivePath ./ios/archive/rnc_app.xcarchive';
 const ipaShell = 'xcodebuild -exportArchive -exportOptionsPlist ./script/ExportOptions.plist -archivePath ./ios/archive/rnc_app.xcarchive -exportPath ./package/ios -allowProvisioningUpdates';
@@ -22,7 +21,7 @@ function cleanXcode(callback) {
 		if(err) {
 			console.error(err);
 		} else {
-			console.log('xcode 清理完成！！');
+			console.log('xcode 清理完成！✨');
 			callback();
 		}
 	});
@@ -41,7 +40,7 @@ function buildArchive(callback) {
 			console.error(err);
 			const isThirdErr = err.toString().includes('node_modules/react-native/third-party/');
 			if(isThirdErr) {
-				thirdErr(callback);
+				thirdErr(() => buildArchive(callback));
 			}
 		} else {
 			console.log('编译archive完成！👌');
@@ -83,6 +82,5 @@ function buildIpa() {
 	});
 }
 
-// cleanXcode(function() {
-	buildArchive(buildIpa);
-// });
+// 执行命令
+cleanXcode(() => buildArchive(buildIpa));
