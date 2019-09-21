@@ -28,9 +28,7 @@ const styleMap = obj => {
 
       styleTranslateMethods.find(method => {
         styleRes = method(key, item);
-        if (styleRes) {
-          return true;
-        }
+        return !!styleRes;
       });
 
       if (styleRes) {

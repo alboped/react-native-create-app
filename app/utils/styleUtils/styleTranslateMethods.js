@@ -44,7 +44,7 @@ const rpx2px = (styleKey, styleValue) => {
 };
 
 /**
- * mergin简写转换
+ * mergin样式转换
  * @param  {String} styleKey   样式属性key
  * @param  {any} styleValue   样式属性值
  * @return {Object}
@@ -52,6 +52,7 @@ const rpx2px = (styleKey, styleValue) => {
 const parseMargin = (styleKey, styleValue) => {
   if (styleKey === 'margin' && typeof styleValue === 'string') {
     const values = value2Arr(styleValue);
+
     if (values.length === 1) {
       return {
         margin: rpxNum(values[0]),
@@ -83,7 +84,7 @@ const parseMargin = (styleKey, styleValue) => {
 };
 
 /**
- * padding简写转换
+ * padding样式转换
  * @param  {String} styleKey   样式属性key
  * @param  {any} styleValue   样式属性值
  * @return {Object}
@@ -123,7 +124,7 @@ const parsePadding = (styleKey, styleValue) => {
 };
 
 /**
- * borderRadius简写转换
+ * borderRadius样式转换
  * @param  {String} styleKey   样式属性key
  * @param  {any} styleValue   样式属性值
  * @return {Object}
@@ -152,7 +153,7 @@ const parseBorderRadius = (styleKey, styleValue) => {
 };
 
 /**
- * boxShadow简写转换
+ * boxShadow样式转换
  * @param  {String} styleKey   样式属性key
  * @param  {any} styleValue   样式属性值
  * @return {Object}
@@ -189,7 +190,7 @@ const parseBoxShadow = (styleKey, styleValue) => {
 };
 
 /**
- * borderRadius简写转换
+ * borderRadius样式转换
  * @param  {String} styleKey   样式属性key
  * @param  {any} styleValue   样式属性值
  * @return {Object}

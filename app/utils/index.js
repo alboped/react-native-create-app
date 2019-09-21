@@ -1,1 +1,1 @@
-export {default as styleCreate} from './styleUtils/styleCreate';
+export Style from './styleUtils';

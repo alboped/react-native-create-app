@@ -1,6 +1,6 @@
-import {styleCreate} from '@/utils';
+import {Style} from '@/utils';
 
-export default styleCreate({
+export default Style.createStyle({
   container: {
     flex: 1,
     absoluteFill: true,

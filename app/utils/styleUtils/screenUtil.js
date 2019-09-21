@@ -10,7 +10,19 @@ export const deviceWidth = Dimensions.get('window').width;
 /* 设备高度 */
 export const deviceHeight = Dimensions.get('window').height;
 
-const BASE_WIDTH = 750;
+/*
+ * 屏幕基准宽度
+ */
+let BASE_WIDTH = 750;
+
+/**
+ * 设置屏幕基准宽度
+ * @param  {Number} width 宽度
+ * @return {undefined}
+ */
+export const setBaseWidth = width => {
+  BASE_WIDTH = width;
+};
 
 /**
  * 根据基准宽度计算实际像素
