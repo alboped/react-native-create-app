@@ -7,11 +7,12 @@
 
 ## Style.setBaseWidth： 设置屏幕适配基准宽度
 设置屏幕适配基准宽度，即设计稿的屏幕宽度，默认为**750**；  
-类似于web端rem的用法。如需修改，请在项目初始化时设置；
+类似于web端rem的用法。如需修改，请在项目初始化时设置；  
+> **以下示例均以750位基准宽度；**
 
 示例：
 ```js
-Style.setBaseWidth(750);
+Style.setBaseWidth(750);  
 ```
 
 ## Style.createStyle：创建样式
