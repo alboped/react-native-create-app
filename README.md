@@ -6,7 +6,8 @@
 <img width="760" src="./walle.jpg" alt="icon">
 
 - [x] [样式工具方法；](./app/utils/styleUtils/index.md)
-- [ ] 集成dva；
+- [ ] 集成dva、redux-persist；
 - [ ] react-navigation封装；
-- [ ] 公用组件；
+- [ ] 基础UI组件库；
+- [ ] webview封装；
 - [ ] 热更细封装；
