@@ -190,6 +190,43 @@ const parseBoxShadow = (styleKey, styleValue) => {
 };
 
 /**
+ * boxShadow样式转换
+ * @param  {String} styleKey   样式属性key
+ * @param  {any} styleValue   样式属性值
+ * @return {Object}
+ */
+const parseTextShadow = (styleKey, styleValue) => {
+  if (styleKey === 'textShadow' && typeof styleValue === 'string') {
+    const values = value2Arr(styleValue);
+
+    const shadowObj = {
+      textShadowOffset: {
+        width: rpxNum(values[0]),
+        height: rpxNum(values[1]),
+      },
+      textShadowRadius: rpxNum(values[2]),
+    };
+
+    if (values.length === 4) {
+      return {
+        ...shadowObj,
+        textShadowColor: values[3],
+      };
+    } else if (values.length === 5) {
+      return {
+        ...shadowObj,
+        textShadowOpacity: Number.parseFloat(values[3]),
+        textShadowColor: values[4],
+      };
+    } else {
+      throw Error(`textShadow样式格式错误：${styleValue}`);
+    }
+  }
+
+  return false;
+};
+
+/**
  * borderRadius样式转换
  * @param  {String} styleKey   样式属性key
  * @param  {any} styleValue   样式属性值
@@ -236,6 +273,7 @@ export default [
   parsePadding,
   parseBorderRadius,
   parseBoxShadow,
+  parseTextShadow,
   parseBorder,
   rpx2px,
   absoluteFill,

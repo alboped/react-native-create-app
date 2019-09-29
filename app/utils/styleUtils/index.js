@@ -1,8 +1,8 @@
-import createStyle from './createStyle';
+import create from './createStyle';
 import {setBaseWidth, rpx} from './screenUtil';
 
 export default {
-  createStyle,
+  create,
   setBaseWidth,
   rpx,
 };

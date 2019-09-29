@@ -9,7 +9,7 @@ export default class LaunchScreen extends Components {
   render() {
     return (
       <View>
-        <Text>启动页面</Text>
+        <Text style={styles.text}>启动页面</Text>
       </View>
     );
   }

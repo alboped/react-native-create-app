@@ -1,25 +1,27 @@
-# 样式转换工具
+# Style 样式转换工具
 
 - [x] 尺寸单位转换；
 - [x] 支持`margin` `padding`等样式的简写；
 - [x] 其他便捷功能；
 
 
-## Style.setBaseWidth： 设置屏幕适配基准宽度
+## .setBaseWidth(width: Number)：设置屏幕适配基准宽度
 设置屏幕适配基准宽度，即设计稿的屏幕宽度，默认为**750**；  
 类似于web端rem的用法。如需修改，请在项目初始化时设置；  
-> **以下示例均以750位基准宽度；**
+> **以下示例均以750为基准宽度；**
 
 示例：
 ```js
 Style.setBaseWidth(750);  
 ```
 
-## Style.createStyle：创建样式
+## .create(options: Object)：创建样式
 创建样式，可替代RN自带的`StyleSheet.create()`方法；
 
 ```js
-Style.createStyle(options);
+Style.create({
+  ...
+});
 ```
 
 ### 尺寸单位：rpx
@@ -51,10 +53,12 @@ RN自带的样式写法不支持像css那样的简写，使用createStyle可以�
 - padding
 - border
 - boxShadow
+- textShadow
 - borderRadius
 
-**其中除`boxShadow`外，其他样式与css的简写方式相同；**  
+**其中除`boxShadow`、`textShadow`外，其他样式与css的简写方式相同；**  
 **`boxShadow`中，第三个属性输出的属性为`shadowRadius`，第四个参数输出的属性为`shadowOpacity`或`shadowColor`；**
+**`textShadow`同理；**
 
 输入：
 ```js
@@ -124,13 +128,13 @@ RN自带的样式写法不支持像css那样的简写，使用createStyle可以�
 }
 ```
 
-## Style.rpx：转换尺寸
+## .rpx(value: Number)：转换尺寸
 将设计稿尺寸转换为实际尺寸；
-如果在`createStyle`之外定义样式，需要手动转换尺寸，可以使用`Style.rpx()`方法；
+如果在`create`之外定义样式，需要手动转换尺寸，可以使用`Style.rpx()`方法；
 
 示例：
 ```js
-Style.rpx(100);
+Style.rpx(100);   // 输出值为 50
 ```
 
 ---
