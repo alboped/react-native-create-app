@@ -11,3 +11,4 @@
 - [ ] 基础UI组件库；
 - [ ] webview封装；
 - [ ] 热更细封装；
+- [x] [工具方法；](./app/utils/globalUtils/index.md)
