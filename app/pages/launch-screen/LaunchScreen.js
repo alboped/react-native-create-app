@@ -1,7 +1,7 @@
 import React, {Components} from 'react';
 import {View, Text} from 'react-native';
 
-import styles from './LaunchScreenStyles';
+import styles from './LaunchScreen.style';
 
 console.log('样式===', styles);
 

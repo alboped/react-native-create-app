@@ -7,11 +7,15 @@
 
 module.exports = {
   transformer: {
-    getTransformOptions: async () => ({
-      transform: {
-        experimentalImportSupport: false,
-        inlineRequires: false,
-      },
-    }),
+    getTransformOptions: async () => {
+      console.log('start------');
+      return {
+        transform: {
+          experimentalImportSupport: false,
+          inlineRequires: false,
+        },
+      };
+    },
+    babelTransformerPath: require.resolve('./transformers/style.js'),
   },
 };

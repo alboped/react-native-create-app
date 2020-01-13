@@ -8,11 +8,10 @@
  * @return {Boolean}        是否有属性
  */
 Object.isEmptyObject = object => {
-	if(!typeof object === 'object') {
-		throw Error('不是对象');
-		return;
-	}
+  if (!typeof object === 'object') {
+    throw Error('不是对象');
+  }
 
-	const keys = Object.keys(object);
-	return keys.length === 0;
+  const keys = Object.keys(object);
+  return keys.length === 0;
 };

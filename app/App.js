@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
 
 import '@/utils/globalUtils';
-import styles from './pages/launch-screen/LaunchScreenStyles.js';
+import styles from './pages/launch-screen/LaunchScreen.style.js';
 console.log(styles);
 
 export default class App extends Component {

@@ -12,42 +12,42 @@ Number.isNumber = arg => /^(\-|\+)?\d+(\.\d+)?$/.test(arg);
  * @return {String}      格式化后的金额字符串
  */
 Number.thousands = (money, options = {}) => {
-	let isMinus = false;
-	if(!money || isNaN(money)) {
-		money = '0';
-	}
-	if(money < 0) {
-		isMinus = true;
-		money = Math.abs(money);
-	}
+  let isMinus = false;
+  if (!money || isNaN(money)) {
+    money = '0';
+  }
+  if (money < 0) {
+    isMinus = true;
+    money = Math.abs(money);
+  }
 
-	money = money.toString();
+  money = money.toString();
 
-	const moneyArr = money.split('.');
+  const moneyArr = money.split('.');
 
-	const intArr = moneyArr[0].split('');
+  const intArr = moneyArr[0].split('');
 
-	const intDivideArr = intArr.map((item, i) => {
-		const index = intArr.length - i;
+  const intDivideArr = intArr.map((item, i) => {
+    const index = intArr.length - i;
 
-		if(index === intArr.length || index % 3 !== 0) {
-			return item;
-		} else {
-			return `,${item}`;
-		}
-	});
+    if (index === intArr.length || index % 3 !== 0) {
+      return item;
+    } else {
+      return `,${item}`;
+    }
+  });
 
-	let decimalStr;
+  let decimalStr;
 
-	if(!moneyArr[1]) {
-		decimalStr = `00`;
-	} else if(moneyArr[1].length === 1) {
-		decimalStr = `${moneyArr[1]}0`;
-	} else {
-		decimalStr = moneyArr[1];
-	}
+  if (!moneyArr[1]) {
+    decimalStr = '00';
+  } else if (moneyArr[1].length === 1) {
+    decimalStr = `${moneyArr[1]}0`;
+  } else {
+    decimalStr = moneyArr[1];
+  }
 
-	const sign = options.sign ? '+' : '';
+  const sign = options.sign ? '+' : '';
 
-	return `${isMinus ? '-' : sign}${intDivideArr.join('')}.${decimalStr}`;
-}
+  return `${isMinus ? '-' : sign}${intDivideArr.join('')}.${decimalStr}`;
+};
