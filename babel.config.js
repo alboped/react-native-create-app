@@ -5,10 +5,10 @@ module.exports = api => {
     presets: ['module:metro-react-native-babel-preset'],
     plugins: [
       [
-        'root-import',
+        'babel-plugin-root-import',
         {
           rootPathSuffix: './app/',
-          rootPathPrefix: '@',
+          rootPathPrefix: '~',
         },
       ],
     ],

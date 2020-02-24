@@ -1,4 +1,4 @@
-import {Style} from '@/utils';
+import {Style} from '~/utils';
 
 export default Style.create({
   container: {
