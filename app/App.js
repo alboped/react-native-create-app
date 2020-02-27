@@ -1,19 +1,44 @@
-import { createAppContainer } from 'react-navigation';
+/*
+ * @Author: shi_zj
+ * @Date: 2020-02-24 14:31:41
+ * @LastEditTime: 2020-02-27 23:36:53
+ * @LastEditors: shi_zj
+ * @Description: 
+ * @FilePath: /react-native-create-app/app/App.js
+ */
+import React, { Component } from 'react';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import '~/utils/globalUtils';
 import LaunchScreen from './pages/launch-screen/LaunchScreen';
-import Example from './pages/componsnts-example';
+import ExampleNav from './pages/componsnts-example/navigation';
 
 const AppNavigator = createStackNavigator({
-  LaunchScreen: {
-    screen: LaunchScreen,
-  },
-  Example: {
-    screen: Example,
-  },
+	...ExampleNav,
 }, {
-		initialRouteName: 'LaunchScreen'
+		initialRouteName: 'ExampleHome',
 });
 
-export default createAppContainer(AppNavigator);
+const AppContainer = createAppContainer(
+	createSwitchNavigator({
+		LaunchScreen,
+		App: AppNavigator,
+	}, {
+		initialRouteName: 'LaunchScreen',
+	})
+);
+
+export default class extends Component {
+	onNavigationStateChange = (prevState, newState, action) => {
+		console.log(prevState, newState, action);
+	}
+
+	render() {
+		return (
+			<AppContainer
+				onNavigationStateChange={this.onNavigationStateChange}
+			/>
+		);
+	}
+};
