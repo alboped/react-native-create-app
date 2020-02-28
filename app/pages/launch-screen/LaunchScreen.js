@@ -1,7 +1,7 @@
 /*
  * @Author: shi_zj
  * @Date: 2020-02-24 14:31:44
- * @LastEditTime: 2020-02-27 23:38:08
+ * @LastEditTime: 2020-02-29 01:04:40
  * @LastEditors: shi_zj
  * @Description: 启动页
  * @FilePath: /react-native-create-app/app/pages/launch-screen/LaunchScreen.js
@@ -14,7 +14,7 @@ import styles from './LaunchScreen.style';
 
 export default class LaunchScreen extends Component {
   state = {
-    countDown: 3,
+    countDown: 1,
   }
 
   componentDidMount() {

@@ -1,15 +1,11 @@
-/*
- * @Author: shi_zj
- * @Date: 2020-02-24 14:31:44
- * @LastEditTime: 2020-02-27 22:52:29
- * @LastEditors: shi_zj
- * @Description: 
- * @FilePath: /react-native-create-app/app/pages/componsnts-example/index.js
- */
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
+import { connect } from 'react-redux';
 
+@connect(state => ({
+  count: state.app.count
+}))
 export default class extends Component {
   static navigationOptions = {
     title: '组件示例'
@@ -54,15 +50,26 @@ export default class extends Component {
   }
 
   handleItemPress = item => {
+    const { navigation, count } = this.props;
     if (item.route) {
-      this.props.navigation.push(item.route);
+      navigation.push(item.route);
     }
+
+    console.log(this.props);
+
+    this.props.dispatch({
+      type: 'app/updateState',
+      payload: {
+        count: count + 1
+      }
+    })
   }
 
   render() {
     return (
       <View>
         {this.renderListItem()}
+        <Text>{this.props.count}</Text>
       </View>
     );
   }
