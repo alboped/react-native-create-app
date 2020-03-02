@@ -22,7 +22,7 @@ const AppContainer = createAppContainer(
 
 export default class extends Component {
   onNavigationStateChange = (prevState, newState, action) => {
-    console.log(prevState, newState, action);
+    // console.log(prevState, newState, action);
   }
 
   render() {
