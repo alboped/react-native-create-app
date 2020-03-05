@@ -3,9 +3,9 @@ import { View, Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 
-// @connect(state => ({
-//   count: state.app.count
-// }))
+@connect(state => ({
+  count: state.app.count
+}))
 export default class extends Component {
   static navigationOptions = {
     title: '组件示例'
@@ -56,12 +56,12 @@ export default class extends Component {
       navigation.push(item.route);
     }
 
-    // this.props.dispatch({
-    //   type: 'app/updateState',
-    //   payload: {
-    //     count: count + 1
-    //   }
-    // })
+    this.props.dispatch({
+      type: 'app/updateState',
+      payload: {
+        count: count + 1
+      }
+    })
   }
 
   render() {

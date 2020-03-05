@@ -1,35 +1,24 @@
 import React, { Component } from 'react';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import LaunchScreen from '../pages/launch-screen/LaunchScreen';
 import ExampleNav from '../pages/componsnts-example/navigation';
 
-const AppNavigator = createStackNavigator({
-  ...ExampleNav,
-}, {
-  initialRouteName: 'ExampleHome',
-});
+import Example from '../pages/componsnts-example';
+import ButtonExample from '../pages/componsnts-example/button/ButtonExample';
+import ButtonGroupExample from '../pages/componsnts-example/button-group/ButtonGroupExample';
 
-const AppContainer = createAppContainer(
-  createSwitchNavigator({
-    LaunchScreen,
-    App: AppNavigator,
-  }, {
-    initialRouteName: 'LaunchScreen',
-  })
-);
+const Stack = createStackNavigator();
 
-export default class extends Component {
-  onNavigationStateChange = (prevState, newState, action) => {
-    // console.log(prevState, newState, action);
-  }
-
-  render() {
-    return (
-      <AppContainer
-        onNavigationStateChange={this.onNavigationStateChange}
-      />
-    );
-  }
-};
+export default function Navigator() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Example">
+        <Stack.Screen name="Example" component={Example} options={{ title: '示例' }} />
+        <Stack.Screen name="ButtonExample" component={ButtonExample} options={{ title: 'Button 按钮' }} />
+        <Stack.Screen name="ButtonGroupExample" component={ButtonGroupExample} options={{ title: '按钮组' }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
