@@ -3,12 +3,18 @@ import { View, Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 
+import Demo from './Demo';
+
 @connect(state => ({
   count: state.app.count
 }))
 export default class extends Component {
   static navigationOptions = {
     title: '组件示例'
+  }
+
+  componentDidMount() {
+    // console.log(this.props);
   }
 
   exampleList = [
@@ -25,6 +31,7 @@ export default class extends Component {
     {
       title: 'Card 卡片',
       icon: 'credit-card',
+      route: 'CardExample',
     },
     {
       title: 'CheckBox 复选框',
@@ -50,10 +57,10 @@ export default class extends Component {
   }
 
   handleItemPress = item => {
-    const { navigation, count } = this.props;
+    const { router, count } = this.props;
 
     if (item.route) {
-      navigation.push(item.route);
+      router.push(item.route);
     }
 
     this.props.dispatch({
@@ -69,6 +76,7 @@ export default class extends Component {
       <View>
         {this.renderListItem()}
         <Text>{this.props.count}</Text>
+        <Demo></Demo>
       </View>
     );
   }

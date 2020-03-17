@@ -3,9 +3,9 @@ import { View, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 
 export default class extends Component {
-  static navigationOptions = {
-    title: '按钮'
-  }
+  // static navigationOptions = {
+  //   title: '按钮'
+  // }
 
   render() {
     return (
