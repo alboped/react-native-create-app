@@ -1,3 +1,5 @@
+import appModel from './app';
+
 export default [
-	require('./app').default,
+  appModel,
 ];

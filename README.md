@@ -1,99 +1,22 @@
 # react-native-create-app
-react-native 项目模版
+> react-native项目模版；
 
-基于
-* [dva](https://dvajs.com/) - 基于 [redux](https://github.com/reduxjs/redux) 和 [redux-saga](https://github.com/redux-saga/redux-saga) 的数据流方案，简化了redux的用法。
-* [redux-persist](https://github.com/rt2zz/redux-persist) - redux 数据持久化方案。
+<img width="760" src="./walle.jpg" alt="icon">
 
-## 运行项目
-
-### 安装依赖
-```bash
-$ yarn
-```
-或
-```bash
-$ npm install
-```
-
-### 运行项目
-运行ios
-
-```bash
-$ yarn ios
-```
-
-运行android
-
-```bash
-$ yarn android
-```
-
-## 项目结构
-```
-.
-├── android             // 安卓项目目录
-├── ios                 // ios项目目录
-├── app                 // js文件目录
-│   ├── assets          // 静态资源目录
-│   ├── components      // 通用组件目录
-│   ├── mock            // mock数据目录
-│   ├── config          // 配置文件目录
-│   ├── models          // dva model 目录
-│   ├── navigator       // 导航配置目录
-│   ├── page            // 所有页面组件目录
-│   ├── utils           // 工具方法目录
-│   └── App.js          // 根组件
-└── index.js            // 入口文件
-```
-
-## 工具API
-
-### Redux
-#### connect：包装connect装饰器
-```js
-import { connect } from '……/utils/decorator';
-
-@connect(['app', 'home'])
-class ComponsntA extends Component {}
-
-/* 等同于：
-@connect(state => ({
-    app: state.app,
-    home: state.home,
-}))
-class ComponsntA extends Component {}
-*/
-```
-
-#### dispatchAction：包装dispatch
-```js
-@connect()
-class ComponentA extends Component {
-    handle = () => {
-        this.props.dispatchAction('app/login', {
-            mobile: '123456',
-            // ……
-        });
-
-        /* 等同于：
-        this.props.dispatch({
-            type: 'app/login',
-            payload: {
-                mobile: '123456',
-                // ……
-            }
-        });
-        */
-    }
-}
-```
-
-### Navigation
-#### push
-```js
-import Navigation from '……/utils/navigation';
-
-// 跳转到Login页面；
-Navigation.push('Login');
-```
+- [x] [样式工具方法；](./app/utils/styleUtils/index.md)
+- [x] 集成[dva](https://dvajs.com)、[redux-persist](https://github.com/rt2zz/redux-persist)；
+- [ ] react-navigation封装；
+  - [x] 公共方法高阶组件；
+  - [ ] 页面跳转拦截；
+  - [ ] 路由深度链接；
+- [ ] 基础UI组件库；
+- [ ] webview封装；
+- [ ] 热更细封装；
+- [ ] [工具方法；](./app/utils/globalUtils/index.md)
+  - [ ] 字符串处理；
+  - [x] 数组处理；
+  - [x] 数字、金额处理；
+  - [x] JSON处理；
+  - [ ] 对象处理；
+- 埋点；
+- [ ] bundlejs 拆分；

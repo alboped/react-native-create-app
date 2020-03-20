@@ -1,11 +1,10 @@
-import { AppRegistry, YellowBox } from 'react-native';
-import App from './app/App';
+/**
+ * @format
+ */
 
-AppRegistry.registerComponent('rnc_app', () => App);
+import {AppRegistry} from 'react-native';
 
-YellowBox.ignoreWarnings([
-	'Warning: ',
-	'RCTBridge ',
-	'Remote debugger ',
-	'Module RCTImageLoader',
-]);
+import App from '~/App.js';
+import {name as appName} from './app.json';
+
+AppRegistry.registerComponent(appName, () => App);

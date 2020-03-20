@@ -1,18 +1,16 @@
 export default {
-	namespace: 'app',
-	state: {
-		mobile: '',
-	},
-	reducers: {
-		saveUser: (state, { payload }) => ({ ...state, ...payload }),
-	},
-	effects: {
-		*login({ payload }, { call, put }) {
-			yield put({
-				type: 'saveUser',
-				payload
-			});
-		},
-	},
-	subscriptions: {}
+  namespace: 'app',
+  state: {
+    count: 0,
+  },
+  reducers: {
+    updateState(state, { payload }) {
+      console.log(state, payload);
+      return { ...state, ...payload }
+    },
+  },
+  effects: {
+  },
+  subscriptions: {
+  },
 }
