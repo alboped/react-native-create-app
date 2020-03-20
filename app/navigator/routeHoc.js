@@ -3,15 +3,20 @@
  */
 import React, { Component } from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, useIsFocused } from '@react-navigation/native';
 
 /**
- * 事件通知高阶组件
+ * 导航高阶组件
  */
 const routerHoc = () => WrappedComponent => {
   function EnhancedComponent(props) {
     const navigation = props.navigation || useNavigation();
     const route = props.route || useRoute();
+    // const isFocused = props.isFocused || useIsFocused();
+
+    const navigate = (...args) => {
+      return navigation.navigate(...args);
+    }
 
     const push = (...args) => {
       return navigation.push(...args);
@@ -22,20 +27,28 @@ const routerHoc = () => WrappedComponent => {
     };
 
     const replace = (...args) => {
-      navigation.replace(...args);
+      return navigation.replace(...args);
     };
 
     const pop = (...args) => {
-      navigation.pop(...args);
+      return navigation.pop(...args);
+    };
+
+    const isFocused = (...args) => {
+      return navigation.isFocused(...args);
     };
 
     const compsProps = {
       ...props,
+      navigation,
       route,
       router: {
+        navigate,
         push,
         back,
         replace,
+        pop,
+        isFocused,
       }
     }
 

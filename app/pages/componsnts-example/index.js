@@ -40,6 +40,11 @@ export default class extends Component {
     {
       title: 'Icon 图标',
       icon: 'apps',
+    },
+    {
+      title: 'Text 图标',
+      icon: 'apps',
+      route: 'TextExample',
     }
   ]
 
