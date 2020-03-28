@@ -9,14 +9,6 @@ import Demo from './Demo';
   count: state.app.count
 }))
 export default class extends Component {
-  static navigationOptions = {
-    title: '组件示例'
-  }
-
-  componentDidMount() {
-    // console.log(this.props);
-  }
-
   exampleList = [
     {
       title: 'Button 按钮',

@@ -1,7 +1,7 @@
 /**
  * 导航装饰器
  */
-import React, { Component } from 'react';
+import React from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import { useNavigation, useRoute, useIsFocused } from '@react-navigation/native';
 
@@ -12,6 +12,8 @@ const routerHoc = () => WrappedComponent => {
   function EnhancedComponent(props) {
     const navigation = props.navigation || useNavigation();
     const route = props.route || useRoute();
+
+    // TODO 貌似没啥用
     // const isFocused = props.isFocused || useIsFocused();
 
     const navigate = (...args) => {

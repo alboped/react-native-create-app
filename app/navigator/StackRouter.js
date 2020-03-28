@@ -1,7 +1,5 @@
 import { StackRouter, CommonActions } from '@react-navigation/native';
 
-console.log('CommonActions', CommonActions);
-
 /**
  * 自定义router
  */
@@ -21,6 +19,7 @@ const CustomStackRouter = options => {
       /* 判断是否为跳转动作 */
       const isPush = ['NAVIGATE', 'PUSH'].includes(type);
 
+      /* 跳转拦截 */
       if (isPush && payload.name === 'ButtonExample') {
         return state;
       }
