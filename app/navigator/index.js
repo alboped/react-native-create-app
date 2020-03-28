@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
 import LaunchScreen from '../pages/launch-screen/LaunchScreen';
 import exampleRoute from '../pages/componsnts-example/navigation';
 import routeHoc from './routeHoc';
+import createStackNavigator from './createStackNavigator';
 
 const Stack = createStackNavigator();
 
-export default function Navigator() {
+function Navigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="ExampleHome">
@@ -29,3 +29,5 @@ export default function Navigator() {
     </NavigationContainer>
   );
 }
+
+export default Navigator;
