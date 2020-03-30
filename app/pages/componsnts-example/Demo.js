@@ -1,25 +1,22 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
-import routerHoc from '../../navigator/routeHoc';
+import useRouter from '~/navigator/useRouter';
 
-@routerHoc()
-export default class Demo extends React.Component {
+function Demo(props) {
+  const router = useRouter(props);
+
   test = () => {
-    console.log(this.props.router.isFocused());
-    setTimeout(() => {
-      console.log(this.props.router.isFocused());
-    }, 2000);
+    router.push('CardExample');
   }
 
-  render() {
-    console.log(this.props);
-    return (
-      <View>
-        <TouchableOpacity onPress={this.test}>
-          <Text>1234234234</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+  return (
+    <View>
+      <TouchableOpacity onPress={test}>
+        <Text>1234234234</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
+
+export default Demo;

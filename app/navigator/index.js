@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 import LaunchScreen from '../pages/launch-screen/LaunchScreen';
@@ -9,8 +9,10 @@ import createStackNavigator from './createStackNavigator';
 const Stack = createStackNavigator();
 
 function Navigator() {
+  const ref = React.useRef(null);
+
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={ref}>
       <Stack.Navigator initialRouteName="ExampleHome">
         {
           Object.keys(exampleRoute).map(routeName => {
