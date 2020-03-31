@@ -3,7 +3,8 @@ import { View, Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 
-import Demo from './Demo';
+import HocDemo from './HocDemo';
+import HookDemo from './HookDemo';
 
 @connect(state => ({
   count: state.app.count
@@ -73,7 +74,8 @@ export default class extends Component {
       <View>
         {this.renderListItem()}
         <Text>{this.props.count}</Text>
-        <Demo></Demo>
+        <HocDemo ref={console.log}/>
+        <HookDemo/>
       </View>
     );
   }
