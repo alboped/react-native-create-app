@@ -1,13 +1,13 @@
 # react-native-create-app
 > react-native项目模版；
 
-<img width="760" src="./walle.jpg" alt="icon">
+<img width="500" style="display: block; margin: 0 auto;" src="./walle.jpg" alt="icon">
 
 - [x] [样式工具方法；](./app/utils/styleUtils/index.md)
 - [x] 集成[dva](https://dvajs.com)、[redux-persist](https://github.com/rt2zz/redux-persist)；
 - [ ] react-navigation封装；
   - [x] 公共方法高阶组件；
-  - [ ] 页面跳转拦截；
+  - [x] 页面跳转拦截；
   - [ ] 路由深度链接；
 - [ ] 基础UI组件库；
 - [ ] webview封装；
