@@ -41,7 +41,7 @@
 │   │   ├── StackRouter.js
 │   │   ├── createStackNavigator.js
 │   │   ├── index.js
-│   │   ├── interceptors
+│   │   ├── interceptors                  // 导航拦截器
 │   │   ├── routeHoc.js
 │   │   └── useRouter.js
 │   ├── pages                             // 页面

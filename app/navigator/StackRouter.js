@@ -1,5 +1,7 @@
 import { StackRouter, StackActions, CommonActions } from '@react-navigation/native';
 
+import interceptors from './interceptors';
+
 /**
  * 跳转动作类型，对应的跳转方法
  */
@@ -35,6 +37,25 @@ const navigation = {
 const ALLOW_NAVIGATOR_ACTION = 'ALLOW_NAVIGATOR_ACTION';
 
 /**
+ * 继续跳转页面，不会被拦截
+ * @param {Object} action 页面跳转的action
+ * @param {Object} navRef 导航实例
+ */
+const navigatorNext = (action, navRef) => {
+  const { type, payload } = action;
+  if (navRef?.current) {
+    navigation[actionTypes[type]](
+      navRef.current.dispatch,
+      payload.name,
+      {
+        ...(payload.params || {}),
+        [ALLOW_NAVIGATOR_ACTION]: true,
+      }
+    );
+  }
+}
+
+/**
  * 自定义router
  */
 const CustomStackRouter = options => {
@@ -52,24 +73,19 @@ const CustomStackRouter = options => {
      */
     getStateForAction(state, action, options) {
       const { payload = {}, type } = action;
-      const { name = '', params = {} } = payload;
+      const { params = {} } = payload;
 
       /* 判断是否为跳转动作 */
       const isPushAction = Object.keys(actionTypes).includes(type);
 
       /* 跳转拦截 */
-      if (isPushAction && !params[ALLOW_NAVIGATOR_ACTION] && payload.name === 'ButtonExample') {
+      if (isPushAction && !params[ALLOW_NAVIGATOR_ACTION]) {
         const navRef = getNavRef();
-        if (navRef) {
-          navigation[actionTypes[type]](
-            navRef.current?.dispatch,
-            payload.name,
-            {
-              ...(payload.params || {}),
-              [ALLOW_NAVIGATOR_ACTION]: true,
-            }
-          );
-        }
+
+        interceptors(action, resAction => {
+          navigatorNext(resAction || action, navRef);
+        });
+
         return state;
       }
 
