@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 
-import '~/utils/globalUtils';
+import '@app/utils/globalUtils';
 import dva from './utils/dva';
 import models from './models';
 import Navigator from './navigator';

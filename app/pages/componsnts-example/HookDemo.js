@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
-import useRouter from '~/navigator/useRouter';
+import useRouter from '@navigator/useRouter';
 
 function Demo(props) {
   const router = useRouter(props);

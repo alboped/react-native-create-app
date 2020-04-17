@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
-import routeHoc from '~/navigator/routeHoc';
+import routeHoc from '@app/navigator/routeHoc';
 
 @routeHoc()
 class HocDemo extends React.Component {

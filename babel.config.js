@@ -7,9 +7,21 @@ module.exports = api => {
       [
         'babel-plugin-root-import',
         {
-          rootPathSuffix: './app/',
-          rootPathPrefix: '~',
-        },
+          paths: [
+            {
+              rootPathPrefix: '@app',
+              rootPathSuffix: './app/',
+            },
+            {
+              rootPathPrefix: '@utils',
+              rootPathSuffix: './app/utils/',
+            },
+            {
+              rootPathPrefix: '@navigator',
+              rootPathSuffix: './app/navigator/',
+            }
+          ]
+        }
       ],
       [
         '@babel/plugin-proposal-decorators',
