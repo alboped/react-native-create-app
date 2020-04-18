@@ -1,4 +1,4 @@
-let upstreamTransformer = require('metro-react-native-babel-transformer');
+const upstreamTransformer = require('metro-react-native-babel-transformer');
 
 module.exports.transform = ({src, filename, options}) => {
   let res = {src, filename, options};

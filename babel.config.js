@@ -19,6 +19,10 @@ module.exports = api => {
             {
               rootPathPrefix: '@navigator',
               rootPathSuffix: './app/navigator/',
+            },
+            {
+              rootPathPrefix: '@config',
+              rootPathSuffix: './app/config/',
             }
           ]
         }

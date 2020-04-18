@@ -1,12 +1,12 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 
-import '@app/utils/globalUtils';
-import dva from './utils/dva';
+import '@utils/globalUtils';
+import { dva } from '@utils';
+import { persistEnhancer } from '@utils/persist';
+import { persistConf } from '@config';
 import models from './models';
 import Navigator from './navigator';
-import persistConf from './config/persist.conf';
-import { persistEnhancer } from './utils/persist';
 
 const app = dva({
 	initialState: {},
