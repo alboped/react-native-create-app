@@ -23,7 +23,7 @@ export default class extends Component {
     },
     {
       title: 'List 列表',
-      icon: 'credit-card',
+      icon: 'format-list-bulleted',
       route: 'ListExample',
     },
     {
@@ -40,9 +40,14 @@ export default class extends Component {
       icon: 'apps',
     },
     {
-      title: 'Text 图标',
-      icon: 'apps',
+      title: 'Text 文字',
+      icon: 'text-format',
       route: 'TextExample',
+    },
+    {
+      title: 'Overlay 遮罩',
+      icon: 'text-format',
+      route: 'OverlayExample',
     }
   ]
 

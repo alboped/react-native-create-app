@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { ListItem } from 'react-native-elements';
@@ -11,18 +11,12 @@ function ListExample(props) {
   const listExample = useSelector(state => state.app.listExample || []);
   const dispatch = useDispatcher();
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch('app/getList');
   }, []);
 
-  push = () => {
-    router.push('ButtonGroupExample');
-  }
-
-  add = () => {
-    dispatch('app/getList', {
-      count: count + 1
-    });
+  handleItemPress = item => {
+    console.log(item);
   }
 
   console.log(listExample);
@@ -33,11 +27,10 @@ function ListExample(props) {
         listExample.map((item, index) => (
           <ListItem
             key={index}
-            title={item.title}
-            leftIcon={{ name: item.icon }}
+            title={item.name}
             bottomDivider
             chevron
-            onPress={() => this.handleItemPress(item)}
+            onPress={() => handleItemPress(item)}
           />
         ))
       }

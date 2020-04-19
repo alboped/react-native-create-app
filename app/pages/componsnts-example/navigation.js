@@ -5,4 +5,5 @@ export default {
   CardExample: require('./card/CardExample').default,
   TextExample: require('./text/TextExample').default,
   ListExample: require('./list/ListExample').default,
+  OverlayExample: require('./overlay/OverlayExample').default,
 };

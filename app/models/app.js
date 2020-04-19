@@ -21,9 +21,10 @@ export default {
   effects: {
     *getList(action, { put }) {
       const res = yield fetch.get(API.LIST);
+
       yield put({
         type: 'setList',
-        payload: res.list,
+        payload: res.namelist,
       });
     }
   },
