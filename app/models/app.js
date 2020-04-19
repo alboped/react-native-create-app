@@ -1,12 +1,11 @@
 import fetch from '@utils/fetch';
 import { API } from '@config';
-console.log(API);
 
 export default {
   namespace: 'app',
   state: {
     count: 0,
-    list: [],
+    listExample: [],
   },
   reducers: {
     updateState(state, { payload }) {
@@ -15,13 +14,13 @@ export default {
     setList(state, action) {
       return {
         ...state,
-        dataSource: action.payload,
+        listExample: action.payload,
       }
     }
   },
   effects: {
     *getList(action, { put }) {
-      const res = yield fetch.get(API);
+      const res = yield fetch.get(API.LIST);
       yield put({
         type: 'setList',
         payload: res.list,

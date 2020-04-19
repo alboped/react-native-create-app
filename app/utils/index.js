@@ -1,2 +1,2 @@
-export Style from './styleUtils';
+export Style from './style';
 export dva from './dva';

@@ -22,6 +22,11 @@ export default class extends Component {
       route: 'ButtonGroupExample',
     },
     {
+      title: 'List 列表',
+      icon: 'credit-card',
+      route: 'ListExample',
+    },
+    {
       title: 'Card 卡片',
       icon: 'credit-card',
       route: 'CardExample',

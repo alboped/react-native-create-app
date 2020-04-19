@@ -5,4 +5,4 @@
 /**
  * 列表示例
  */
-export const EXAMPLE_LIST = '/mock/list';
+export const LIST = '/names';

@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 
-import '@utils/globalUtils';
+import '@utils/global';
 import { dva } from '@utils';
 import { persistEnhancer } from '@utils/persist';
 import { persistConf } from '@config';

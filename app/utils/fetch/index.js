@@ -1,7 +1,7 @@
 import './promise-extends';
 import fetchClass from './fetchClass';
 
-const BASE_URL = '';
+const BASE_URL = 'http://rap2.taobao.org:38080/app/mock/251359';
 
 const fetchInstance = new fetchClass();
 
