@@ -5,7 +5,7 @@ import LaunchScreen from '../pages/launch-screen/LaunchScreen';
 import exampleRoute from '../pages/componsnts-example/navigation';
 import routeHoc from './routeHoc';
 import createStackNavigator from './createStackNavigator';
-// import TabNavigator from './TabNavigator';
+import TabNavigator from './TabNavigator';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +18,7 @@ function Navigator() {
   return (
     <NavigationContainer ref={ref}>
       <Stack.Navigator initialRouteName="Tab" screenOptions={screenOptions}>
+        <Stack.Screen name="Tab" component={TabNavigator} />
         {
           Object.keys(exampleRoute).map(routeName => {
             const screenComponent = routeHoc()(exampleRoute[routeName]);
