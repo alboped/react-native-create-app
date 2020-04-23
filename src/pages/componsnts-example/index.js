@@ -68,7 +68,7 @@ export default class extends Component {
     const { router, count } = this.props;
 
     if (item.route) {
-      router.navigate(item.route);
+      router.push(item.route);
     }
 
     this.props.dispatch({
