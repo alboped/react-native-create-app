@@ -12,7 +12,10 @@ export default class extends Component {
   render() {
     return (
       <View>
-        <Button title="默认按钮" onPress={this.routerPage}/>
+        <Button
+          title="默认按钮"
+          onPress={this.routerPage}
+        />
       </View>
     );
   }

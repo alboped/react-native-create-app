@@ -14,4 +14,4 @@ const app = dva({
 	extraEnhancers: [persistEnhancer(persistConf)],
 });
 
-export default app.start(<Navigator/>);
+export default app.start(<Navigator />);

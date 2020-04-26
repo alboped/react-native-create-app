@@ -8,16 +8,10 @@ import routerHoc from './routeHoc';
 
 const Tab = createBottomTabNavigator();
 
-const tabNavigationConf = [
-  {
-
-  }
-]
-
 export default function App() {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
+      screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           return <Icon name="rowing" color={color} size={size}/>
         },

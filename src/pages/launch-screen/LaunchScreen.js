@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import { View, Text, SafeAreaView } from 'react-native';
+import React, { Component } from 'react';
+import { Text, SafeAreaView } from 'react-native';
 
 import styles from './LaunchScreen.style';
 
 export default class LaunchScreen extends Component {
   state = {
     countDown: 1,
-  }
+  };
 
   componentDidMount() {
     this.timer = setInterval(() => {

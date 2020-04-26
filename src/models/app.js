@@ -15,8 +15,8 @@ export default {
       return {
         ...state,
         listExample: action.payload,
-      }
-    }
+      };
+    },
   },
   effects: {
     *getList(action, { put }) {
@@ -26,6 +26,6 @@ export default {
         type: 'setList',
         payload: res.namelist,
       });
-    }
+    },
   },
-}
+};

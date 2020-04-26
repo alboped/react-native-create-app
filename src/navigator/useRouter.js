@@ -1,13 +1,17 @@
 /**
  * 导航装饰器
  */
-import { useNavigation, useRoute, useIsFocused } from '@react-navigation/native';
+import {
+  useNavigation,
+  useRoute,
+  // useIsFocused,
+} from '@react-navigation/native';
 
 /**
  * 获取router的hook
  * @param {Object}} props 组件props
  */
-const useRouter = (props) => {
+const useRouter = props => {
   const _navigation = useNavigation();
   const navigation = props.navigation || _navigation;
 
@@ -50,7 +54,7 @@ const useRouter = (props) => {
     replace,
     pop,
     isFocused,
-  }
-}
+  };
+};
 
 export default useRouter;

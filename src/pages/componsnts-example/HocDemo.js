@@ -7,7 +7,7 @@ import routeHoc from '@src/navigator/routeHoc';
 class HocDemo extends React.Component {
   push = () => {
     this.props.router.push('ButtonGroupExample');
-  }
+  };
 
   render() {
     const { count } = this.props;

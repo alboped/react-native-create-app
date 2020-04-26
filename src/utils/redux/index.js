@@ -1,15 +1,22 @@
 /**
  * redux 工具
  */
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 /**
  * hook, 封装dispatch方法；
  */
-export const useDispatcher = () => {
+export const useConnect = selector => {
   const dispatch = useDispatch();
-  return (type, payload) => dispatch({
-    type,
-    payload
-  });
-}
+  const state = useSelector(selector);
+
+  const dispatcher = (type, payload) => {
+    console.log(type, payload);
+    dispatch({
+      type,
+      payload,
+    });
+  };
+
+  return [state, dispatcher];
+};

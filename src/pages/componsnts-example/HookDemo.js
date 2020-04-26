@@ -1,24 +1,22 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { useSelector } from 'react-redux';
-import { useDispatcher } from '@utils/redux';
 
+import { useConnect } from '@utils/redux';
 import useRouter from '@navigator/useRouter';
 
 function Demo(props) {
   const router = useRouter(props);
-  const count = useSelector(state => state.app.count);
-  const dispatch = useDispatcher();
+  const [count, dispatch] = useConnect(state => state.app.count);
 
-  push = () => {
+  const push = () => {
     router.push('ButtonGroupExample');
-  }
+  };
 
-  add = () => {
-    dispatch('app/getList', {
-      count: count + 1
+  const add = () => {
+    dispatch('app/updateState', {
+      count: count + 1,
     });
-  }
+  };
 
   return (
     <View>
@@ -32,5 +30,15 @@ function Demo(props) {
     </View>
   );
 }
+
+function View1(props) {
+  return (
+    <View
+      style={{}}
+    />
+  );
+}
+
+export { View1 };
 
 export default Demo;
