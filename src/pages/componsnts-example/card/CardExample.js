@@ -10,7 +10,7 @@ export default function HomeScreen({ navigation }) {
         <Button onPress={() => setCount(c => c + 1)} title={`${count}Update count`} />
       ),
     });
-  }, [navigation, setCount]);
+  }, [navigation, count]);
 
   return <Text>Count: {count}</Text>;
-};
+}

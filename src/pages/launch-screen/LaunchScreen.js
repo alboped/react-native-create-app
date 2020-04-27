@@ -15,7 +15,7 @@ export default class LaunchScreen extends Component {
         // this.props.navigation.navigate('App');
       } else {
         this.setState({
-          countDown: countDown - 1
+          countDown: countDown - 1,
         });
       }
     }, 1000);

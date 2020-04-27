@@ -7,9 +7,9 @@ import HocDemo from './HocDemo';
 import HookDemo from './HookDemo';
 
 @connect(state => ({
-  count: state.app.count
+  count: state.app.count,
 }))
-export default class extends Component {
+class ExampleHome extends Component {
   exampleList = [
     {
       title: 'Button 按钮',
@@ -48,8 +48,8 @@ export default class extends Component {
       title: 'Overlay 遮罩',
       icon: 'text-format',
       route: 'OverlayExample',
-    }
-  ]
+    },
+  ];
 
   renderListItem = () => {
     return this.exampleList.map((item, index) => (
@@ -62,7 +62,7 @@ export default class extends Component {
         onPress={() => this.handleItemPress(item)}
       />
     ));
-  }
+  };
 
   handleItemPress = item => {
     const { router, count } = this.props;
@@ -74,19 +74,21 @@ export default class extends Component {
     this.props.dispatch({
       type: 'app/updateState',
       payload: {
-        count: count + 1
-      }
-    })
-  }
+        count: count + 1,
+      },
+    });
+  };
 
   render() {
     return (
       <View>
         {this.renderListItem()}
         <Text>{this.props.count}</Text>
-        <HocDemo ref={console.log}/>
-        <HookDemo/>
+        <HocDemo ref={ref => console.log(ref)} />
+        <HookDemo />
       </View>
     );
   }
 }
+
+export default ExampleHome;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-import LaunchScreen from '../pages/launch-screen/LaunchScreen';
 import exampleRoute from '../pages/componsnts-example/navigation';
 import routeHoc from './routeHoc';
 import createStackNavigator from './createStackNavigator';
@@ -13,25 +12,17 @@ function Navigator() {
   const ref = React.useRef(null);
   const screenOptions = {
     getNavRef: () => ref,
-  }
+  };
 
   return (
     <NavigationContainer ref={ref}>
       <Stack.Navigator initialRouteName="Tab" screenOptions={screenOptions}>
         <Stack.Screen name="Tab" component={TabNavigator} />
-        {
-          Object.keys(exampleRoute).map(routeName => {
-            const screenComponent = routeHoc()(exampleRoute[routeName]);
+        {Object.keys(exampleRoute).map(routeName => {
+          const screenComponent = routeHoc()(exampleRoute[routeName]);
 
-            return (
-              <Stack.Screen
-                key={routeName}
-                name={routeName}
-                component={screenComponent}
-              />
-            );
-          })
-        }
+          return <Stack.Screen key={routeName} name={routeName} component={screenComponent} />;
+        })}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -2,7 +2,7 @@
  * 屏幕适配工具类
  */
 
-import {Dimensions, StyleSheet} from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 /* 设备宽度 */
 export const deviceWidth = Dimensions.get('window').width;

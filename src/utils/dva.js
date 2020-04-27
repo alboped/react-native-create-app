@@ -2,12 +2,14 @@ import React from 'react';
 import { create } from 'dva-core';
 import { Provider, connect } from 'react-redux';
 
-export { connect }
+export { connect };
 
 export default function (options) {
   const app = create(options);
 
-  if (!global.registered) options.models.forEach(model => app.model(model));
+  if (!global.registered) {
+    options.models.forEach(model => app.model(model));
+  }
   global.registered = true;
 
   app.start();

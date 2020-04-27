@@ -1,4 +1,4 @@
-import { persistReducer, persistStore } from "redux-persist";
+import { persistReducer, persistStore } from 'redux-persist';
 
 export const persistEnhancer = opts => {
   return createStore => (reducer, initialState, enhancer) => {

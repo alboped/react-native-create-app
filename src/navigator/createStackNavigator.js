@@ -8,26 +8,14 @@ import StackRouter from './StackRouter';
  * 自定义navigator创建函数
  * @param {Object} navigator 创建参数
  */
-const StackNavigator = ({
-  initialRouteName,
-  children,
-  screenOptions,
-  ...rest
-}) => {
+const StackNavigator = ({ initialRouteName, children, screenOptions, ...rest }) => {
   const { state, navigation, descriptors } = useNavigationBuilder(StackRouter, {
     children,
     screenOptions,
     initialRouteName,
   });
 
-  return (
-    <StackView
-      {...rest}
-      state={state}
-      navigation={navigation}
-      descriptors={descriptors}
-    />
-  )
-}
+  return <StackView {...rest} state={state} navigation={navigation} descriptors={descriptors} />;
+};
 
 export default createNavigatorFactory(StackNavigator);

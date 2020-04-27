@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Overlay, Button } from 'react-native-elements';
 
-function OverlayExample(props) {
+function OverlayExample() {
   const [visible, setVisible] = useState(false);
 
   return (

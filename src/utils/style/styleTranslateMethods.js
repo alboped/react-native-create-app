@@ -2,9 +2,9 @@
  * 样式属性转换函数
  */
 
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import {rpx} from './screenUtil';
+import { rpx } from './screenUtil';
 
 /* rpx字符串转为数字 */
 const rpxNum = str => {
@@ -13,11 +13,7 @@ const rpxNum = str => {
     return Number.parseFloat(str);
   }
 
-  if (
-    typeof str === 'string' &&
-    str.endsWith('rpx') &&
-    Number.isNumber(str.replace('rpx', ''))
-  ) {
+  if (typeof str === 'string' && str.endsWith('rpx') && Number.isNumber(str.replace('rpx', ''))) {
     return rpx(Number.parseFloat(str));
   } else {
     throw Error(`样式单位格式错误：rpx ----> ${str}`);

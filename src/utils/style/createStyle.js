@@ -4,7 +4,7 @@
  *   - 自定义样式属性转换；
  */
 
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import styleTranslateMethods from './styleTranslateMethods';
 
@@ -32,7 +32,7 @@ const styleMap = obj => {
       });
 
       if (styleRes) {
-        styleObj = {...styleObj, ...styleRes};
+        styleObj = { ...styleObj, ...styleRes };
       } else {
         styleObj[key] = item;
       }

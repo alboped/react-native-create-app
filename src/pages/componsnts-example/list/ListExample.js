@@ -1,39 +1,31 @@
 import React, { useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import { View } from 'react-native';
 import { ListItem } from 'react-native-elements';
 
-import { useDispatcher } from '@utils/redux';
-import useRouter from '@navigator/useRouter';
+import { useConnect } from '@utils/redux';
 
-function ListExample(props) {
-  const router = useRouter(props);
-  const listExample = useSelector(state => state.app.listExample || []);
-  const dispatch = useDispatcher();
+function ListExample() {
+  const [listExample, dispatch] = useConnect(state => state.app.listExample || []);
 
   useEffect(() => {
     dispatch('app/getList');
   }, []);
 
-  handleItemPress = item => {
+  const handleItemPress = item => {
     console.log(item);
-  }
-
-  console.log(listExample);
+  };
 
   return (
     <View>
-      {
-        listExample.map((item, index) => (
-          <ListItem
-            key={index}
-            title={item.name}
-            bottomDivider
-            chevron
-            onPress={() => handleItemPress(item)}
-          />
-        ))
-      }
+      {listExample.map((item, index) => (
+        <ListItem
+          key={index}
+          title={item.name}
+          bottomDivider
+          chevron
+          onPress={() => handleItemPress(item)}
+        />
+      ))}
     </View>
   );
 }

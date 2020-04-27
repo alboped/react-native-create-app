@@ -6,8 +6,8 @@ import interceptors from './interceptors';
  * 跳转动作类型，对应的跳转方法
  */
 const actionTypes = {
-  'NAVIGATE': 'navigate',
-  'PUSH': 'push'
+  NAVIGATE: 'navigate',
+  PUSH: 'push',
 };
 
 /**
@@ -15,21 +15,15 @@ const actionTypes = {
  */
 const navigation = {
   push(dispatch, routeName, params) {
-    dispatch(
-      StackActions.push(routeName, params)
-    );
+    dispatch(StackActions.push(routeName, params));
   },
   navigate(dispatch, routeName, params) {
-    dispatch(
-      CommonActions.navigate(routeName, params)
-    );
+    dispatch(CommonActions.navigate(routeName, params));
   },
   replace(dispatch, routeName, params) {
-    dispatch(
-      StackActions.replace(routeName, params)
-    );
+    dispatch(StackActions.replace(routeName, params));
   },
-}
+};
 
 /**
  * 允许跳转的参数字段名
@@ -44,22 +38,17 @@ const ALLOW_NAVIGATOR_ACTION = 'ALLOW_NAVIGATOR_ACTION';
 const navigatorNext = (action, navRef) => {
   const { type, payload } = action;
   if (navRef?.current) {
-    navigation[actionTypes[type]](
-      navRef.current.dispatch,
-      payload.name,
-      {
-        ...(payload.params || {}),
-        [ALLOW_NAVIGATOR_ACTION]: true,
-      }
-    );
+    navigation[actionTypes[type]](navRef.current.dispatch, payload.name, {
+      ...(payload.params || {}),
+      [ALLOW_NAVIGATOR_ACTION]: true,
+    });
   }
-}
+};
 
 /**
  * 自定义router
  */
 const CustomStackRouter = options => {
-  console.log(options);
   const router = StackRouter(options);
   const { getNavRef } = options.screenOptions;
 

@@ -1,26 +1,22 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
 
 import useRouter from '@navigator/useRouter';
+import { useConnect } from '@utils/redux';
 
 function MinePage(props) {
   const router = useRouter(props);
-  const count = useSelector(state => state.app.count);
-  const dispatch = useDispatch();
+  const [count, dispatch] = useConnect(state => state.app.count);
 
-  push = () => {
+  const push = () => {
     router.push('ButtonGroupExample');
-  }
+  };
 
-  add = () => {
-    dispatch({
-      type: 'app/updateState',
-      payload: {
-        count: count + 1
-      }
+  const add = () => {
+    dispatch('app/updateState', {
+      count: count + 1,
     });
-  }
+  };
 
   return (
     <View>

@@ -9,9 +9,9 @@ import models from './models';
 import Navigator from './navigator';
 
 const app = dva({
-	initialState: {},
-	models,
-	extraEnhancers: [persistEnhancer(persistConf)],
+  initialState: {},
+  models,
+  extraEnhancers: [persistEnhancer(persistConf)],
 });
 
 export default app.start(<Navigator />);

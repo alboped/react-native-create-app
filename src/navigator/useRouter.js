@@ -23,7 +23,7 @@ const useRouter = props => {
 
   const navigate = (...args) => {
     return navigation.navigate(...args);
-  }
+  };
 
   const push = (...args) => {
     return navigation.push(...args);

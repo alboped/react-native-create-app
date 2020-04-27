@@ -10,25 +10,19 @@ import useRouter from './useRouter';
  * 导航高阶组件
  */
 const routerHoc = () => WrappedComponent => {
-  function EnhancedComponent({forwardRef, ...props}) {
+  function EnhancedComponent({ forwardRef, ...props }) {
     const router = useRouter(props);
 
-    return (
-      <WrappedComponent
-        {...props}
-        router={router}
-        ref={forwardRef}
-      />
-    );
+    return <WrappedComponent {...props} router={router} ref={forwardRef} />;
   }
 
-  EnhancedComponent.displayName = `withHOC(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+  EnhancedComponent.displayName = `withHOC(${
+    WrappedComponent.displayName || WrappedComponent.name || 'Component'
+  })`;
 
   hoistNonReactStatic(EnhancedComponent, WrappedComponent);
 
-  return React.forwardRef((props, ref) => (
-    <EnhancedComponent {...props} forwardRef={ref} />
-  ));
-}
+  return React.forwardRef((props, ref) => <EnhancedComponent {...props} forwardRef={ref} />);
+};
 
 export default routerHoc;

@@ -13,7 +13,7 @@ export default function App() {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          return <Icon name="rowing" color={color} size={size}/>
+          return <Icon name="rowing" color={color} size={size} />;
         },
       })}
     >

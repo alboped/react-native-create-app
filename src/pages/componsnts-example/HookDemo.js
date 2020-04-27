@@ -6,7 +6,10 @@ import useRouter from '@navigator/useRouter';
 
 function Demo(props) {
   const router = useRouter(props);
-  const [count, dispatch] = useConnect(state => state.app.count);
+  const [appState, dispatch] = useConnect(state => ({
+    count: state.app.count,
+    list: state.app.count,
+  }));
 
   const push = () => {
     router.push('ButtonGroupExample');
@@ -14,7 +17,7 @@ function Demo(props) {
 
   const add = () => {
     dispatch('app/updateState', {
-      count: count + 1,
+      count: appState.count + 1,
     });
   };
 
@@ -25,20 +28,10 @@ function Demo(props) {
         <Text>跳转</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={add}>
-        <Text>{count}</Text>
+        <Text>{appState.count}</Text>
       </TouchableOpacity>
     </View>
   );
 }
-
-function View1(props) {
-  return (
-    <View
-      style={{}}
-    />
-  );
-}
-
-export { View1 };
 
 export default Demo;

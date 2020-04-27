@@ -2,6 +2,8 @@ module.exports = {
   root: true,
   extends: '@react-native-community',
   rules: {
-    'no-var': 2,
+    "react-hooks/exhaustive-deps": 1,
+    "react-hooks/rules-of-hooks": 2,
+    "no-var": 2,
   }
 };
