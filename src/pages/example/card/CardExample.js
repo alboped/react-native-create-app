@@ -1,16 +1,19 @@
 import React from 'react';
 import { Text, Button } from 'react-native';
 
-export default function HomeScreen({ navigation }) {
+import useRouter from '@navigator/useRouter';
+
+export default function HomeScreen() {
   const [count, setCount] = React.useState(0);
+  const router = useRouter();
 
   React.useLayoutEffect(() => {
-    navigation.setOptions({
+    router.setOptions({
       headerRight: () => (
         <Button onPress={() => setCount(c => c + 1)} title={`${count}Update count`} />
       ),
     });
-  }, [navigation, count]);
+  }, [router, count]);
 
   return <Text>Count: {count}</Text>;
 }

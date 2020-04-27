@@ -2,9 +2,8 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from 'react-native-elements';
 
-import Home from '@src/pages/componsnts-example';
+import Home from '@src/pages/example';
 import MinePage from '@src/pages/mine/MinePage';
-import routerHoc from './routeHoc';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,8 +16,8 @@ export default function App() {
         },
       })}
     >
-      <Tab.Screen name="首页" component={routerHoc()(Home)} />
-      <Tab.Screen name="我的" component={routerHoc()(MinePage)} />
+      <Tab.Screen name="首页" component={Home} />
+      <Tab.Screen name="我的" component={MinePage} />
     </Tab.Navigator>
   );
 }

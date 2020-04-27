@@ -11,7 +11,7 @@ import {
  * 获取router的hook
  * @param {Object}} props 组件props
  */
-const useRouter = props => {
+const useRouter = (props = {}) => {
   const _navigation = useNavigation();
   const navigation = props.navigation || _navigation;
 
@@ -41,8 +41,24 @@ const useRouter = props => {
     return navigation.pop(...args);
   };
 
+  const popToTop = (...args) => {
+    return navigation.popToTop(...args);
+  };
+
   const isFocused = (...args) => {
     return navigation.isFocused(...args);
+  };
+
+  const setOptions = (...args) => {
+    return navigation.setOptions(...args);
+  };
+
+  const setParams = (...args) => {
+    return navigation.setParams(...args);
+  };
+
+  const goBack = (...args) => {
+    return navigation.goBack(...args);
   };
 
   return {
@@ -53,7 +69,11 @@ const useRouter = props => {
     back,
     replace,
     pop,
+    popToTop,
     isFocused,
+    setOptions,
+    setParams,
+    goBack,
   };
 };
 

@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import { ScrollView } from 'react-native';
 import { ListItem } from 'react-native-elements';
-import { connect } from 'react-redux';
 
-import HocDemo from './HocDemo';
-import HookDemo from './HookDemo';
+import { useConnect } from '@utils/redux';
+import useRouter from '@navigator/useRouter';
 
-@connect(state => ({
-  count: state.app.count,
-}))
-class ExampleHome extends Component {
-  exampleList = [
+function ExampleHome() {
+  const router = useRouter();
+  const [count, dispatch] = useConnect(state => state.app.count);
+
+  const exampleList = [
     {
       title: 'Button 按钮',
       icon: 'crop-landscape',
@@ -51,44 +50,30 @@ class ExampleHome extends Component {
     },
   ];
 
-  renderListItem = () => {
-    return this.exampleList.map((item, index) => (
+  const renderListItem = () => {
+    return exampleList.map((item, index) => (
       <ListItem
         key={index}
         title={item.title}
         leftIcon={{ name: item.icon }}
         bottomDivider
         chevron
-        onPress={() => this.handleItemPress(item)}
+        onPress={() => handleItemPress(item)}
       />
     ));
   };
 
-  handleItemPress = item => {
-    const { router, count } = this.props;
-
+  const handleItemPress = item => {
     if (item.route) {
       router.push(item.route);
     }
 
-    this.props.dispatch({
-      type: 'app/updateState',
-      payload: {
-        count: count + 1,
-      },
+    dispatch('app/updateState', {
+      count: count + 1,
     });
   };
 
-  render() {
-    return (
-      <View>
-        {this.renderListItem()}
-        <Text>{this.props.count}</Text>
-        <HocDemo ref={ref => console.log(ref)} />
-        <HookDemo />
-      </View>
-    );
-  }
+  return <ScrollView>{renderListItem()}</ScrollView>;
 }
 
 export default ExampleHome;

@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-import exampleRoute from '../pages/componsnts-example/navigation';
-import routeHoc from './routeHoc';
+import exampleRoute from '../pages/example/navigation';
 import createStackNavigator from './createStackNavigator';
 import TabNavigator from './TabNavigator';
 
@@ -19,7 +18,7 @@ function Navigator() {
       <Stack.Navigator initialRouteName="Tab" screenOptions={screenOptions}>
         <Stack.Screen name="Tab" component={TabNavigator} />
         {Object.keys(exampleRoute).map(routeName => {
-          const screenComponent = routeHoc()(exampleRoute[routeName]);
+          const screenComponent = exampleRoute[routeName];
 
           return <Stack.Screen key={routeName} name={routeName} component={screenComponent} />;
         })}
