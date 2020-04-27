@@ -48,9 +48,9 @@ const navigatorNext = (action, navRef) => {
 /**
  * 自定义router
  */
-const CustomStackRouter = options => {
-  const router = StackRouter(options);
-  const { getNavRef } = options.screenOptions;
+const CustomStackRouter = routerOptions => {
+  const router = StackRouter(routerOptions);
+  const { getNavRef } = routerOptions.screenOptions;
 
   return {
     ...router,

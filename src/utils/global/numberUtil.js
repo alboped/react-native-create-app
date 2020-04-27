@@ -3,7 +3,7 @@
  */
 
 /* 判断是否为数字 */
-Number.isNumber = arg => /^(\-|\+)?\d+(\.\d+)?$/.test(arg);
+Number.isNumber = arg => /^(-|\+)?\d+(\.\d+)?$/.test(arg);
 
 /**
  * 金额格式化（添加千分位）

@@ -1,3 +1,3 @@
-import { Style } from '@utils';
+import Style from '@utils/style';
 
 export default Style.create({});

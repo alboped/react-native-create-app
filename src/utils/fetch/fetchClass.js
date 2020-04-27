@@ -88,7 +88,7 @@ export default class SXAjax {
 
       Object.keys(data).forEach(key => {
         const value = data[key];
-        if (value !== null && value !== '' && value !== void 0) {
+        if (value !== null && value !== '' && value !== undefined) {
           noEmptyData[key] = value;
         }
       });
