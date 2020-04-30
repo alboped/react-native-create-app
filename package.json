@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js",
     "pod-install": "cd ios && pod install",
     "lint-staged": "lint-staged"
   },

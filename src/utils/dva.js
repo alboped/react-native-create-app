@@ -16,10 +16,9 @@ export default function (options) {
 
 
 
-  app.start = container => () => <Provider store={store}>{container}</Provider>;
+    app.start = container => () => <Provider store={store}>{container}</Provider>;
     app.getStore = () => store;
 
   return app;
 }
-
 
