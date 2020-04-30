@@ -10,6 +10,7 @@ function ListExample() {
   useEffect(() => {
     dispatch('app/getList');
   }, []);
+  
 
   const handleItemPress = item => {
     console.log(item);

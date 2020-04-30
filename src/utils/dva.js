@@ -12,13 +12,11 @@ export default function (options) {
   }
   global.registered = true;
 
-  app.start();const store = app._store;
+  app.start();
+  const store = app._store;
 
-
-
-    app.start = container => () => <Provider store={store}>{container}</Provider>;
-    app.getStore = () => store;
+  app.start = container => () => <Provider store={store}>{container}</Provider>;
+  app.getStore = () => store;
 
   return app;
 }
-
