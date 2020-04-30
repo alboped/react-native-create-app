@@ -8,21 +8,17 @@ function ListExample() {
   const [listExample, dispatch] = useConnect(state => state.app.listExample);
 
   useEffect(() => {
-
-
     dispatch('app/getList');
   }, []);
 
-
   const handleItemPress = item => {
-    console.log(item );
+    console.log(item);
   };
 
   return (
     <View>
       {listExample.map((item, index) => (
         <ListItem
-
           key={index}
           title={item.name}
           bottomDivider
