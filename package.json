@@ -9,8 +9,7 @@
     "test": "jest",
     "lint": "eslint .",
     "pod-install": "cd ios && pod install",
-    "lint-staged": "lint-staged",
-    "precommit": "npm run lint-staged"
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.9.0",
@@ -51,7 +50,12 @@
   "jest": {
     "preset": "react-native"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "**/*.js": "eslint"
+    "**/*.js": ["eslint", "git add"]
   }
 }

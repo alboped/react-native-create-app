@@ -14,8 +14,10 @@ export default function (options) {
 
   app.start();const store = app._store;
 
+
+
   app.start = container => () => <Provider store={store}>{container}</Provider>;
-  app.getStore = () => store;
+    app.getStore = () => store;
 
   return app;
 }
