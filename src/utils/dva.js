@@ -10,6 +10,7 @@ export default function (options) {
   if (!global.registered) {
     options.models.forEach(model => app.model(model));
   }
+
   global.registered = true;
 
   app.start();

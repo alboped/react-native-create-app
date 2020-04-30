@@ -9,7 +9,8 @@
     "test": "jest",
     "lint": "eslint --ext .js",
     "pod-install": "cd ios && pod install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "precommit": "npm run lint-staged"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.9.0",
@@ -41,7 +42,7 @@
     "babel-jest": "^25.3.0",
     "babel-plugin-root-import": "^6.5.0",
     "eslint": "^6.8.0",
-    "husky": "^4.2.5",
+    "husky": "2.7.0",
     "jest": "^25.3.0",
     "lint-staged": "^10.2.0",
     "metro-react-native-babel-preset": "^0.59.0",
