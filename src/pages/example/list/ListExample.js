@@ -9,6 +9,9 @@ function ListExample() {
 
   useEffect(() => {
     dispatch('app/getList');
+    return function () {
+      console.log('unmount-------------------------');
+    };
   }, []);
 
   const handleItemPress = item => {

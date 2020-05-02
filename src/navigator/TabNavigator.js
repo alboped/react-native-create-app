@@ -2,22 +2,40 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from 'react-native-elements';
 
-import Home from '@src/pages/example';
-import MinePage from '@src/pages/mine/MinePage';
-
 const Tab = createBottomTabNavigator();
+
+const tabConf = {
+  Home: {
+    label: '首页',
+    name: 'Home',
+    component: require('@src/pages/example').default,
+    iconName: 'autorenew',
+  },
+  Mine: {
+    label: '我的',
+    name: 'Mine',
+    component: require('@src/pages/mine/MinePage').default,
+    iconName: 'autorenew',
+  },
+};
 
 export default function App() {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          return <Icon name="rowing" color={color} size={size} />;
-        },
-      })}
+      screenOptions={({ route }) => {
+        const tabItem = tabConf[route.name];
+
+        return {
+          tabBarIcon: ({ color, size }) => {
+            return <Icon name={tabItem.iconName} color={color} size={size} />;
+          },
+        };
+      }}
     >
-      <Tab.Screen name="首页" component={Home} />
-      <Tab.Screen name="我的" component={MinePage} />
+      {Object.keys(tabConf).map((key, index) => {
+        const item = tabConf[key];
+        return <Tab.Screen key={index} name={item.name} component={item.component} />;
+      })}
     </Tab.Navigator>
   );
 }
