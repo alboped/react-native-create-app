@@ -1,26 +1,41 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
 
-import exampleRoute from '../pages/example/navigation';
+import { useConnect } from '@utils/redux';
 import createStackNavigator from './createStackNavigator';
-import TabNavigator from './TabNavigator';
+import { authRoutes, launchRoutes, appRoutes } from './routeList';
+
+export { useFocusEffect };
 
 const Stack = createStackNavigator();
 
 function Navigator() {
   const ref = React.useRef(null);
+  const [app] = useConnect(state => state.app);
+
+  console.log('---=', app);
+
   const screenOptions = {
     getNavRef: () => ref,
   };
 
+  const routes = React.useMemo(() => {
+    if (!app.isLaunch) {
+      return launchRoutes;
+    } else if (!app.isAuth) {
+      return authRoutes;
+    }
+
+    return appRoutes;
+  }, [app]);
+
   return (
     <NavigationContainer ref={ref}>
-      <Stack.Navigator initialRouteName="Tab" screenOptions={screenOptions}>
-        <Stack.Screen name="Tab" component={TabNavigator} />
-        {Object.keys(exampleRoute).map(routeName => {
-          const screenComponent = exampleRoute[routeName];
+      <Stack.Navigator screenOptions={screenOptions}>
+        {Object.keys(routes).map(routeKey => {
+          const screenComponent = routes[routeKey];
 
-          return <Stack.Screen key={routeName} name={routeName} component={screenComponent} />;
+          return <Stack.Screen key={routeKey} name={routeKey} component={screenComponent} />;
         })}
       </Stack.Navigator>
     </NavigationContainer>

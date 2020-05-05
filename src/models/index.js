@@ -1,1 +1,1 @@
-export default [require('./app').default];
+export default [require('./example').default, require('./app').default];

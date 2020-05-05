@@ -7,7 +7,7 @@ import useRouter from '@navigator/useRouter';
 
 function ExampleHome() {
   const router = useRouter();
-  const [count, dispatch] = useConnect(state => state.app.count);
+  const [count, dispatch] = useConnect(state => state.example.count);
 
   const exampleList = [
     {
@@ -68,7 +68,7 @@ function ExampleHome() {
       router.push(item.route);
     }
 
-    dispatch('app/updateState', {
+    dispatch('example/updateState', {
       count: count + 1,
     });
   };

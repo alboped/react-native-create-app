@@ -7,8 +7,8 @@ import useRouter from '@navigator/useRouter';
 function Demo(props) {
   const router = useRouter(props);
   const [appState, dispatch] = useConnect(state => ({
-    count: state.app.count,
-    list: state.app.count,
+    count: state.example.count,
+    list: state.example.count,
   }));
 
   const push = () => {
@@ -16,7 +16,7 @@ function Demo(props) {
   };
 
   const add = () => {
-    dispatch('app/updateState', {
+    dispatch('example/updateState', {
       count: appState.count + 1,
     });
   };

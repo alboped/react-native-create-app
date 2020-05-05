@@ -1,36 +1,37 @@
-import React, { Component } from 'react';
+/**
+ * 启动页面组件
+ */
+import React, { useState, useEffect } from 'react';
 import { Text, SafeAreaView } from 'react-native';
 
+import { useConnect } from '@utils/redux';
 import styles from './LaunchScreen.style';
 
-export default class LaunchScreen extends Component {
-  state = {
-    countDown: 1,
-  };
+function LaunchScreen() {
+  const [countDown, setCountDown] = useState(3);
+  const [app, dispatch] = useConnect(state => state.app);
 
-  componentDidMount() {
-    this.timer = setInterval(() => {
-      const { countDown } = this.state;
-      if (countDown <= 0) {
-        // this.props.navigation.navigate('App');
-      } else {
-        this.setState({
-          countDown: countDown - 1,
-        });
-      }
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountDown(count => {
+        if (count <= 0) {
+          clearInterval(timer);
+          dispatch('app/launch');
+          return count;
+        }
+        return count - 1;
+      });
     }, 1000);
-  }
 
-  componentWillUnmount() {
-    this.timer && clearInterval(this.timer);
-  }
+    return () => clearInterval(timer);
+  }, []);
 
-  render() {
-    return (
-      <SafeAreaView>
-        <Text>启动页</Text>
-        <Text style={styles.text}>{this.state.countDown}</Text>
-      </SafeAreaView>
-    );
-  }
+  return (
+    <SafeAreaView>
+      <Text>启动页</Text>
+      <Text style={styles.text}>{countDown}</Text>
+    </SafeAreaView>
+  );
 }
+
+export default LaunchScreen;

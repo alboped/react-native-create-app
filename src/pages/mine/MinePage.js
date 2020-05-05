@@ -6,14 +6,14 @@ import { useConnect } from '@utils/redux';
 
 function MinePage(props) {
   const router = useRouter(props);
-  const [count, dispatch] = useConnect(state => state.app.count);
+  const [count, dispatch] = useConnect(state => state.example.count);
 
   const push = () => {
     router.push('ButtonGroupExample');
   };
 
   const add = () => {
-    dispatch('app/updateState', {
+    dispatch('example/updateState', {
       count: count + 1,
     });
   };

@@ -1,31 +1,16 @@
-import fetch from '@utils/fetch';
-import { API } from '@config';
-
 export default {
   namespace: 'app',
   state: {
-    count: 0,
-    listExample: [],
+    isLaunch: false, // 是否启动
+    isAuth: false, // 是否登录
   },
   reducers: {
-    updateState(state, { payload }) {
-      return { ...state, ...payload };
+    launch(state) {
+      return { ...state, isLaunch: true };
     },
-    setList(state, action) {
-      return {
-        ...state,
-        listExample: action.payload,
-      };
+    login(state, { payload }) {
+      return { ...state, isAuth: payload };
     },
   },
-  effects: {
-    *getList(action, { put }) {
-      const res = yield fetch.get(API.LIST);
-
-      yield put({
-        type: 'setList',
-        payload: res.namelist,
-      });
-    },
-  },
+  effects: {},
 };

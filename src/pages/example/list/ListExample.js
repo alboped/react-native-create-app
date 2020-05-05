@@ -5,10 +5,10 @@ import { ListItem } from 'react-native-elements';
 import { useConnect } from '@utils/redux';
 
 function ListExample() {
-  const [listExample, dispatch] = useConnect(state => state.app.listExample);
+  const [listExample, dispatch] = useConnect(state => state.example.listExample);
 
   useEffect(() => {
-    dispatch('app/getList');
+    dispatch('example/getList');
     return function () {
       console.log('unmount-------------------------');
     };

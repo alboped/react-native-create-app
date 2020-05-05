@@ -1,5 +1,6 @@
 /**
  * 导航装饰器
+ * !!! 暂时不用，建议全部使用Hook
  */
 import React from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';

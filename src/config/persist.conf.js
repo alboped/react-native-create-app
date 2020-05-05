@@ -8,6 +8,6 @@ export default {
   storage: AsyncStorage,
   whitelist: [
     // 缓存白名单
-    'app',
+    // 'app',
   ],
 };
