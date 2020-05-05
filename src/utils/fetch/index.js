@@ -16,7 +16,7 @@ const fetchInstance = fetch.create(fetchOptions);
 /**
  * 请求拦截
  */
-fetchInstance.interceptors.request.use(
+fetchInstance.instance.interceptors.request.use(
   request => {
     return request;
   },
@@ -28,7 +28,7 @@ fetchInstance.interceptors.request.use(
 /**
  * 响应拦截
  */
-fetchInstance.interceptors.response.use(
+fetchInstance.instance.interceptors.response.use(
   responst => {
     return responst.data;
   },
