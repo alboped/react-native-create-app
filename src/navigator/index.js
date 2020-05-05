@@ -4,6 +4,7 @@ import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
 import { useConnect } from '@utils/redux';
 import createStackNavigator from './createStackNavigator';
 import { authRoutes, launchRoutes, appRoutes } from './routeList';
+import { ComponentsProvider } from '@components';
 
 export { useFocusEffect };
 
@@ -12,8 +13,6 @@ const Stack = createStackNavigator();
 function Navigator() {
   const ref = React.useRef(null);
   const [app] = useConnect(state => state.app);
-
-  console.log('---=', app);
 
   const screenOptions = {
     getNavRef: () => ref,

@@ -21,6 +21,10 @@ module.exports = {
             rootPathPrefix: '@config',
             rootPathSuffix: './src/config/',
           },
+          {
+            rootPathPrefix: '@components',
+            rootPathSuffix: './src/components/',
+          },
         ],
       },
     ],

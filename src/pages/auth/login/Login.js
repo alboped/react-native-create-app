@@ -7,7 +7,7 @@ import { Button } from 'react-native-elements';
 import { useConnect } from '@utils/redux';
 
 function Login() {
-  const [, dispatch] = useConnect();
+  const dispatch = useConnect();
 
   const loginSubmit = () => {
     dispatch('app/login', true);

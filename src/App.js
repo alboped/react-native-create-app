@@ -12,6 +12,9 @@ const app = dva({
   initialState: {},
   models,
   extraEnhancers: [persistEnhancer(persistConf)],
+  onError: err => {
+    console.log(err);
+  },
 });
 
 export default app.start(<Navigator />);

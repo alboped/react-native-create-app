@@ -9,11 +9,9 @@ export default {
   },
   reducers: {
     updateState(state, { payload }) {
-      console.log(1);
       return { ...state, ...payload };
     },
     setList(state, action) {
-      console.log(2);
       return {
         ...state,
         listExample: action.payload,

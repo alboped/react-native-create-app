@@ -1,19 +1,24 @@
-import './promise-extends';
-import fetchClass from './fetchClass';
+import fetch from './fetch';
 
-const BASE_URL = 'http://rap2.taobao.org:38080/app/mock/251359';
+/**
+ * axios 初始参数
+ */
+const fetchOptions = {
+  baseURL: 'http://rap2.taobao.org:38080/app/mock/251359',
+  timeout: 1000 * 60,
+  headers: {
+    'Content-type': 'application/json;charset=UTF-8',
+  },
+};
 
-const fetchInstance = new fetchClass();
-
-fetchInstance.defaults.baseURL = BASE_URL;
-fetchInstance.defaults.timeout = 1000 * 60;
+const fetchInstance = fetch.create(fetchOptions);
 
 /**
  * 请求拦截
  */
-fetchInstance.instance.interceptors.request.use(
-  cfg => {
-    return cfg;
+fetchInstance.interceptors.request.use(
+  request => {
+    return request;
   },
   error => {
     return Promise.reject(error);
@@ -23,9 +28,9 @@ fetchInstance.instance.interceptors.request.use(
 /**
  * 响应拦截
  */
-fetchInstance.instance.interceptors.response.use(
-  cfg => {
-    return cfg;
+fetchInstance.interceptors.response.use(
+  responst => {
+    return responst.data;
   },
   error => {
     return Promise.reject(error);

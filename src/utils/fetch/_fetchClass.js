@@ -178,6 +178,7 @@ export default class SXAjax {
           },
         )
         .catch(error => {
+          console.log('33333333', error);
           reject(error);
         });
     });
