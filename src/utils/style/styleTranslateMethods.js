@@ -4,17 +4,42 @@
 
 import { StyleSheet } from 'react-native';
 
-import { rpx } from './screenUtil';
+import { rpx, vh } from './screenUtil';
 
-/* rpx字符串转为数字 */
-const rpxNum = str => {
+/* 自定义单位对应转换方法 */
+const unitFmtMap = { rpx, vh };
+
+/**
+ * 获取样式单位
+ * @param {String} styleValue 样式值
+ */
+const getUnit = styleValue => {
+  return Object.keys(unitFmtMap).find(key => {
+    return styleValue.endsWith(key) && Number.isNumber(styleValue.replace(key, ''));
+  });
+};
+
+/**
+ * 样式值字符串转为数字
+ * @param {String} str 样式值
+ * @param {*} styleUnit 单位key
+ */
+const unit2Num = (str, styleUnit = null) => {
   // 纯数字直接返回数字
   if (Number.isNumber(str)) {
     return Number.parseFloat(str);
   }
 
-  if (typeof str === 'string' && str.endsWith('rpx') && Number.isNumber(str.replace('rpx', ''))) {
-    return rpx(Number.parseFloat(str));
+  if (styleUnit) {
+    return unitFmtMap[styleUnit](Number.parseFloat(str));
+  }
+
+  if (typeof str === 'string') {
+    const unit = getUnit(str);
+    if (unit) {
+      return unitFmtMap[unit](Number.parseFloat(str));
+    }
+    throw Error(`样式单位格式错误：rpx ----> ${str}`);
   } else {
     throw Error(`样式单位格式错误：rpx ----> ${str}`);
   }
@@ -30,10 +55,14 @@ const value2Arr = str => str.replace(/[ ]+/g, ' ').split(' ');
  * @return {Object}
  */
 const rpx2px = (styleKey, styleValue) => {
-  if (typeof styleValue === 'string' && styleValue.endsWith('rpx')) {
-    return {
-      [styleKey]: rpxNum(styleValue),
-    };
+  if (typeof styleValue === 'string') {
+    const unit = getUnit(styleValue);
+
+    if (unit) {
+      return {
+        [styleKey]: unit2Num(styleValue, unit),
+      };
+    }
   }
 
   return false;
@@ -51,25 +80,25 @@ const parseMargin = (styleKey, styleValue) => {
 
     if (values.length === 1) {
       return {
-        margin: rpxNum(values[0]),
+        margin: unit2Num(values[0]),
       };
     } else if (values.length === 2) {
       return {
-        marginVertical: rpxNum(values[0]),
-        marginHorizontal: rpxNum(values[1]),
+        marginVertical: unit2Num(values[0]),
+        marginHorizontal: unit2Num(values[1]),
       };
     } else if (values.length === 3) {
       return {
-        marginTop: rpxNum(values[0]),
-        marginHorizontal: rpxNum(values[1]),
-        marginBottom: rpxNum(values[2]),
+        marginTop: unit2Num(values[0]),
+        marginHorizontal: unit2Num(values[1]),
+        marginBottom: unit2Num(values[2]),
       };
     } else if (values.length === 4) {
       return {
-        marginTop: rpxNum(values[0]),
-        marginRight: rpxNum(values[1]),
-        marginBottom: rpxNum(values[2]),
-        marginLeft: rpxNum(values[3]),
+        marginTop: unit2Num(values[0]),
+        marginRight: unit2Num(values[1]),
+        marginBottom: unit2Num(values[2]),
+        marginLeft: unit2Num(values[3]),
       };
     } else {
       throw Error('margin 样式格式错误：' + styleValue);
@@ -91,25 +120,25 @@ const parsePadding = (styleKey, styleValue) => {
 
     if (values.length === 1) {
       return {
-        padding: rpxNum(values[0]),
+        padding: unit2Num(values[0]),
       };
     } else if (values.length === 2) {
       return {
-        paddingVertical: rpxNum(values[0]),
-        paddingHorizontal: rpxNum(values[1]),
+        paddingVertical: unit2Num(values[0]),
+        paddingHorizontal: unit2Num(values[1]),
       };
     } else if (values.length === 3) {
       return {
-        paddingTop: rpxNum(values[0]),
-        paddingHorizontal: rpxNum(values[1]),
-        paddingBottom: rpxNum(values[2]),
+        paddingTop: unit2Num(values[0]),
+        paddingHorizontal: unit2Num(values[1]),
+        paddingBottom: unit2Num(values[2]),
       };
     } else if (values.length === 4) {
       return {
-        paddingTop: rpxNum(values[0]),
-        paddingRight: rpxNum(values[1]),
-        paddingBottom: rpxNum(values[2]),
-        paddingLeft: rpxNum(values[3]),
+        paddingTop: unit2Num(values[0]),
+        paddingRight: unit2Num(values[1]),
+        paddingBottom: unit2Num(values[2]),
+        paddingLeft: unit2Num(values[3]),
       };
     } else {
       throw Error(`padding样式格式错误：${styleValue}`);
@@ -131,14 +160,14 @@ const parseBorderRadius = (styleKey, styleValue) => {
 
     if (values.length === 1) {
       return {
-        borderRadius: rpxNum(values[0]),
+        borderRadius: unit2Num(values[0]),
       };
     } else if (values.length === 4) {
       return {
-        borderTopLeftRadius: rpxNum(values[0]),
-        borderTopRightRadius: rpxNum(values[1]),
-        borderBottomRightRadius: rpxNum(values[2]),
-        borderBottomLeftRadius: rpxNum(values[3]),
+        borderTopLeftRadius: unit2Num(values[0]),
+        borderTopRightRadius: unit2Num(values[1]),
+        borderBottomRightRadius: unit2Num(values[2]),
+        borderBottomLeftRadius: unit2Num(values[3]),
       };
     } else {
       throw Error(`borderRadius样式格式错误：${styleValue}`);
@@ -160,10 +189,10 @@ const parseBoxShadow = (styleKey, styleValue) => {
 
     const shadowObj = {
       shadowOffset: {
-        width: rpxNum(values[0]),
-        height: rpxNum(values[1]),
+        width: unit2Num(values[0]),
+        height: unit2Num(values[1]),
       },
-      shadowRadius: rpxNum(values[2]),
+      shadowRadius: unit2Num(values[2]),
     };
 
     if (values.length === 4) {
@@ -197,10 +226,10 @@ const parseTextShadow = (styleKey, styleValue) => {
 
     const shadowObj = {
       textShadowOffset: {
-        width: rpxNum(values[0]),
-        height: rpxNum(values[1]),
+        width: unit2Num(values[0]),
+        height: unit2Num(values[1]),
       },
-      textShadowRadius: rpxNum(values[2]),
+      textShadowRadius: unit2Num(values[2]),
     };
 
     if (values.length === 4) {
@@ -234,7 +263,7 @@ const parseBorder = (styleKey, styleValue) => {
 
     if (values.length === 3) {
       return {
-        borderWidth: rpxNum(values[0]),
+        borderWidth: unit2Num(values[0]),
         borderStyle: values[1],
         borderColor: values[2],
       };

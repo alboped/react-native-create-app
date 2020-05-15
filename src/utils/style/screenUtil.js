@@ -36,3 +36,12 @@ export const rpx = width => {
 
   return Math.floor((deviceWidth / BASE_WIDTH) * width);
 };
+
+/**
+ * 将高度转换为vh单位
+ * @param  {Number} height 高度
+ * @return {Number}    vh 高度
+ */
+export const vh = height => {
+  return Math.floor((deviceHeight / 100) * height);
+};
