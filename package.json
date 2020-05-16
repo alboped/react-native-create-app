@@ -21,6 +21,7 @@
     "axios": "^0.19.2",
     "dva-core": "^2.0.2",
     "hoist-non-react-statics": "^3.3.2",
+    "prop-types": "^15.7.2",
     "qs": "^6.9.3",
     "react": "16.11.0",
     "react-native": "0.62.2",
